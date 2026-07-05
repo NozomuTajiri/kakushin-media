@@ -7,6 +7,8 @@ company: しまむら
 source_name: 日本経済新聞「しまむらの3〜5月、3年連続最高益 PBやキャラクター商品好調」
 source_url: https://www.nikkei.com/article/DGXZQOUB269HH0W6A620C2000000/
 tags: 高付加価値, 最高益, 小売
+genjo: プライベートブランドは「安さ」だけで選ばれている
+riso: 機能という明確な価値で、PBが指名買いされている
 ---
 
 ## 何が起きたか

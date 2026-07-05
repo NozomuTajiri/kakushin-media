@@ -7,6 +7,8 @@ company: 象印マホービン
 source_name: 日本経済新聞「象印マホービン純利益4%増 12〜5月、原材料高を価格転嫁で吸収」
 source_url: https://www.nikkei.com/article/DGXZQOUF2912A0Z20C26A6000000/
 tags: 差別化, 脱コモディティ, 値決め
+genjo: 炊飯器は機能が横並びになり、価格で比較されている
+riso: 炊きあがりという成果で選ばれ、価格転嫁が受け入れられている
 ---
 
 ## 何が起きたか

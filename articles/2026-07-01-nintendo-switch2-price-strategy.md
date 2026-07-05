@@ -7,6 +7,8 @@ company: 任天堂
 source_name: 日本経済新聞「『Switch2』値上げ控え完売つづく 販売台数は上振れに期待も」
 source_url: https://www.nikkei.com/article/DGXZQOUF217P40R20C26A5000000/
 tags: エンタメ, 価格戦略, 値上げ
+genjo: ハードの価格は競合と比較されるコストとして扱われている
+riso: そこでしか得られない体験への入場券として価格が受け入れられている
 ---
 
 ## 何が起きたか

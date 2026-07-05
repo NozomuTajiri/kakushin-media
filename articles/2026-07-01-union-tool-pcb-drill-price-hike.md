@@ -7,6 +7,8 @@ company: ユニオンツール
 source_name: ユニオンツール「価格改定のお知らせ」
 source_url: https://www.uniontool.co.jp/product/news/
 tags: 価格転嫁, B2B, 値決め
+genjo: 消耗品として相見積もりにかけられ、単価で比較されている
+riso: 顧客の歩留まり改善への貢献が、価格の根拠として認められている
 ---
 
 ## 何が起きたか

@@ -7,6 +7,8 @@ company: 日本マイクロソフト
 source_name: 株式会社ジェイテックサービス「【2026年6月更新】Microsoft365の価格改定について」
 source_url: https://jts-home.jp/post_blog/2026%E5%B9%B46%E6%9C%88%E6%9B%B4%E6%96%B0microsoft365%E3%81%AE%E4%BE%A1%E6%A0%BC%E6%94%B9%E5%AE%9A%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6-%E3%83%97%E3%83%AC%E3%83%93%E3%83%A5%E3%83%BC%E4%BE%A1%E6%A0%BC/
 tags: SaaS, 値上げ, 顧客維持
+genjo: 解約を恐れて価格を据え置き、価値と価格の差が開いている
+riso: 移行の選択肢とセットで、価値に見合う価格へ改定できている
 ---
 
 ## 何が起きたか

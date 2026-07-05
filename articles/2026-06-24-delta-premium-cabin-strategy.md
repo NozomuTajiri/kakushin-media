@@ -7,6 +7,8 @@ company: デルタ航空
 source_name: Fortune「Delta's CEO spent 15 years turning the airline into a premium brand」
 source_url: https://fortune.com/2026/04/09/delta-ceo-ed-bastian-value-premium-overtaking-main-cabin-growth-earnings/
 tags: プレミアム戦略, 値決め, 航空業界
+genjo: 座席の広さや設備というスペックで価格差を説明している
+riso: 移動時間の質という顧客の価値で上位価格が選ばれている
 ---
 
 ## 何が起きたか
