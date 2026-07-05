@@ -7,6 +7,7 @@ company: 任天堂
 source_name: 日本経済新聞「『Switch2』値上げ控え完売つづく 販売台数は上振れに期待も」
 source_url: https://www.nikkei.com/article/DGXZQOUF217P40R20C26A5000000/
 tags: エンタメ, 価格戦略, 値上げ
+category: エンタメ・レジャー
 genjo: ハードの価格は競合と比較されるコストとして扱われている
 riso: そこでしか得られない体験への入場券として価格が受け入れられている
 chart: {"title":"Nintendo Switch 2 希望小売価格(国内版)","unit":"円","labels":["改定前","改定後"],"values":[49980,59980],"source":"任天堂発表(2026年5月8日)"}

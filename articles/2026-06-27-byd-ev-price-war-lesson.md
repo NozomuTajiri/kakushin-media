@@ -7,6 +7,7 @@ company: BYD
 source_name: Automotive World「China's EV price war rages on as BYD sets record discounts」
 source_url: https://www.automotiveworld.com/news/chinas-ev-price-war-rages-on-as-byd-sets-record-discounts/
 tags: 価格競争, 値決め, EV
+category: 海外事例
 genjo: 値引きでシェアを守り、価格の主導権を市場に委ねている
 riso: 差別化された価値を根拠に、自社で値決めの主導権を持っている
 chart: {"title":"BYDの中国EV市場シェア","unit":"%","labels":["従来","足元"],"values":[27,17],"source":"Automotive World"}

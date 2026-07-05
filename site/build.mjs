@@ -205,6 +205,21 @@ header.site{background:var(--navy);padding:3rem 0 1.8rem;border-bottom:3px solid
 main{padding:2.5rem 0 4rem}
 footer.site{background:var(--navy);padding:2rem 0 3rem;color:#b9bdcc;font-size:.8rem;line-height:1.8}
 footer.site a{color:var(--gold)}
+/* category nav */
+.catnav{display:flex;flex-wrap:wrap;gap:.45rem;margin:0 0 2rem}
+.catnav a{font-size:.78rem;padding:.2rem .8rem;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--muted);line-height:1.7}
+.catnav a:hover{border-color:var(--gold);color:var(--gold-text)}
+.catnav a.active{background:var(--navy);color:var(--gold);border-color:var(--navy)}
+.catnav .cnt{font-size:.68rem;margin-left:.3rem;opacity:.75}
+.page-title{font-family:"Noto Serif JP","Hiragino Mincho ProN",serif;font-size:1.3rem;color:var(--navy);margin:0 0 1.5rem;font-weight:600}
+.chip-cat{background:var(--navy);color:var(--gold)}
+/* archive */
+.archive h2{font-family:"Noto Serif JP","Hiragino Mincho ProN",serif;font-size:1.1rem;color:var(--navy);margin:2rem 0 .8rem;font-weight:600}
+.archive ul{list-style:none}
+.archive li{padding:.5rem 0;border-bottom:1px dashed var(--line);font-size:.9rem;display:flex;gap:.8rem;align-items:baseline;flex-wrap:wrap}
+.archive time{color:var(--muted);font-size:.78rem;letter-spacing:.05em;flex-shrink:0}
+.archive a:hover{color:var(--gold-text)}
+.archive .a-cat{font-size:.72rem;color:var(--muted)}
 /* index cards */
 .cards{list-style:none;display:grid;grid-template-columns:1fr;gap:1.5rem}
 @media(min-width:640px){.cards{grid-template-columns:1fr 1fr}}
@@ -311,7 +326,44 @@ ${bodyHtml}
 </html>`;
 
 function rel(path) {
-  return path.startsWith("/articles/") ? "../" : "./";
+  return path.startsWith("/articles/") || path.startsWith("/category/") ? "../" : "./";
+}
+
+// ---------- カテゴリ ----------
+const CATEGORY_SLUGS = {
+  "製造業・B2B": "seizo",
+  "消費財・食品": "shohizai",
+  "小売・流通": "kouri",
+  "外食・サービス": "gaishoku",
+  "IT・SaaS": "it-saas",
+  "エンタメ・レジャー": "entertainment",
+  "金融・インフラ": "finance-infra",
+  "海外事例": "global",
+  "サービス業": "services",
+  "マクロ・調査": "macro",
+};
+const catSlug = (name) => CATEGORY_SLUGS[name] || "cat-" + hashOf(name).toString(36).slice(0, 6);
+
+function navHtml(prefix, activeCat, cats) {
+  const chips = [...cats.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .map(
+      ([name, n]) =>
+        `<a href="${prefix}category/${catSlug(name)}.html"${name === activeCat ? ' class="active"' : ""}>${escapeHtml(name)}<span class="cnt">${n}</span></a>`
+    )
+    .join("");
+  return `<nav class="catnav"><a href="${prefix}index.html"${activeCat === null ? ' class="active"' : ""}>最新</a>${chips}<a href="${prefix}archive.html"${activeCat === "__archive" ? ' class="active"' : ""}>全記事一覧</a></nav>`;
+}
+
+function cardHtml(p, prefix) {
+  return `<li class="card"><a class="card-link" href="${prefix}articles/${p.slug}.html">
+  ${heroFor(p.slug, prefix, 800, 240)}
+  <div class="card-body">
+    <div class="card-meta"><time datetime="${p.date}">${p.date.replaceAll("-", ".")}</time>${p.category ? `<span class="chip chip-cat">${escapeHtml(p.category)}</span>` : ""}${chips(p.tags)}</div>
+    <h2>${escapeHtml(p.title)}</h2>
+    <p>${escapeHtml(p.excerpt)}</p>
+  </div>
+</a></li>`;
 }
 
 // ---------- ビルド ----------
@@ -357,24 +409,70 @@ ${p.source_name ? `<div class="source">参考: <a href="${p.source_url}" rel="no
   );
 }
 
-const indexBody = `
-<ul class="cards">
-${posts
-  .map(
-    (p) => `<li class="card"><a class="card-link" href="articles/${p.slug}.html">
-  ${heroFor(p.slug, "", 800, 240)}
-  <div class="card-body">
-    <div class="card-meta"><time datetime="${p.date}">${p.date.replaceAll("-", ".")}</time>${chips(p.tags)}</div>
-    <h2>${escapeHtml(p.title)}</h2>
-    <p>${escapeHtml(p.excerpt)}</p>
-  </div>
-</a></li>`
-  )
-  .join("\n")}
-</ul>`;
+// カテゴリ集計
+const cats = new Map();
+for (const p of posts) if (p.category) cats.set(p.category, (cats.get(p.category) || 0) + 1);
+
+// トップ: カテゴリナビ + 最新24件
+const INDEX_LIMIT = 24;
 writeFileSync(
   join(OUT_DIR, "index.html"),
-  page({ title: `${CONFIG.siteName} | ${CONFIG.company}`, description: CONFIG.tagline, path: "/", bodyHtml: indexBody })
+  page({
+    title: `${CONFIG.siteName} | ${CONFIG.company}`,
+    description: CONFIG.tagline,
+    path: "/",
+    bodyHtml: `${navHtml("./", null, cats)}
+<ul class="cards">
+${posts.slice(0, INDEX_LIMIT).map((p) => cardHtml(p, "")).join("\n")}
+</ul>`,
+  })
+);
+
+// カテゴリページ
+mkdirSync(join(OUT_DIR, "category"), { recursive: true });
+for (const [name, n] of cats) {
+  const list = posts.filter((p) => p.category === name);
+  writeFileSync(
+    join(OUT_DIR, "category", `${catSlug(name)}.html`),
+    page({
+      title: `${name}の記事一覧 | ${CONFIG.siteName}`,
+      description: `${name}に関する付加価値経営の解説記事(${n}件)`,
+      path: `/category/${catSlug(name)}.html`,
+      bodyHtml: `${navHtml("../", name, cats)}
+<h1 class="page-title">${escapeHtml(name)} <span style="font-size:.8rem;color:var(--muted)">${n}件</span></h1>
+<ul class="cards">
+${list.map((p) => cardHtml(p, "../")).join("\n")}
+</ul>`,
+    })
+  );
+}
+
+// 全記事一覧(アーカイブ・軽量)
+const byMonth = new Map();
+for (const p of posts) {
+  const m = p.date.slice(0, 7);
+  if (!byMonth.has(m)) byMonth.set(m, []);
+  byMonth.get(m).push(p);
+}
+writeFileSync(
+  join(OUT_DIR, "archive.html"),
+  page({
+    title: `全記事一覧 | ${CONFIG.siteName}`,
+    description: `${CONFIG.siteName}の全${posts.length}記事の一覧`,
+    path: "/archive.html",
+    bodyHtml: `${navHtml("./", "__archive", cats)}
+<h1 class="page-title">全記事一覧 <span style="font-size:.8rem;color:var(--muted)">${posts.length}件</span></h1>
+<div class="archive">
+${[...byMonth.entries()]
+  .map(
+    ([m, list]) => `<h2>${m.replace("-", "年")}月</h2>
+<ul>
+${list.map((p) => `<li><time datetime="${p.date}">${p.date.replaceAll("-", ".")}</time><a href="articles/${p.slug}.html">${escapeHtml(p.title)}</a>${p.category ? `<span class="a-cat">${escapeHtml(p.category)}</span>` : ""}</li>`).join("\n")}
+</ul>`
+  )
+  .join("\n")}
+</div>`,
+  })
 );
 
 // RSS / sitemap
@@ -393,7 +491,7 @@ if (CONFIG.baseUrl) {
   );
   writeFileSync(
     join(OUT_DIR, "sitemap.xml"),
-    `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${CONFIG.baseUrl}/</loc></url>${posts.map((p) => `<url><loc>${CONFIG.baseUrl}${p.htmlPath}</loc><lastmod>${p.date}</lastmod></url>`).join("")}</urlset>`
+    `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${CONFIG.baseUrl}/</loc></url><url><loc>${CONFIG.baseUrl}/archive.html</loc></url>${[...cats.keys()].map((c) => `<url><loc>${CONFIG.baseUrl}/category/${catSlug(c)}.html</loc></url>`).join("")}${posts.map((p) => `<url><loc>${CONFIG.baseUrl}${p.htmlPath}</loc><lastmod>${p.date}</lastmod></url>`).join("")}</urlset>`
   );
 }
 writeFileSync(join(OUT_DIR, ".nojekyll"), "");

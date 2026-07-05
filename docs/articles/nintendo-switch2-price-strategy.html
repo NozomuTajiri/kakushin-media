@@ -30,6 +30,21 @@ header.site{background:var(--navy);padding:3rem 0 1.8rem;border-bottom:3px solid
 main{padding:2.5rem 0 4rem}
 footer.site{background:var(--navy);padding:2rem 0 3rem;color:#b9bdcc;font-size:.8rem;line-height:1.8}
 footer.site a{color:var(--gold)}
+/* category nav */
+.catnav{display:flex;flex-wrap:wrap;gap:.45rem;margin:0 0 2rem}
+.catnav a{font-size:.78rem;padding:.2rem .8rem;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--muted);line-height:1.7}
+.catnav a:hover{border-color:var(--gold);color:var(--gold-text)}
+.catnav a.active{background:var(--navy);color:var(--gold);border-color:var(--navy)}
+.catnav .cnt{font-size:.68rem;margin-left:.3rem;opacity:.75}
+.page-title{font-family:"Noto Serif JP","Hiragino Mincho ProN",serif;font-size:1.3rem;color:var(--navy);margin:0 0 1.5rem;font-weight:600}
+.chip-cat{background:var(--navy);color:var(--gold)}
+/* archive */
+.archive h2{font-family:"Noto Serif JP","Hiragino Mincho ProN",serif;font-size:1.1rem;color:var(--navy);margin:2rem 0 .8rem;font-weight:600}
+.archive ul{list-style:none}
+.archive li{padding:.5rem 0;border-bottom:1px dashed var(--line);font-size:.9rem;display:flex;gap:.8rem;align-items:baseline;flex-wrap:wrap}
+.archive time{color:var(--muted);font-size:.78rem;letter-spacing:.05em;flex-shrink:0}
+.archive a:hover{color:var(--gold-text)}
+.archive .a-cat{font-size:.72rem;color:var(--muted)}
 /* index cards */
 .cards{list-style:none;display:grid;grid-template-columns:1fr;gap:1.5rem}
 @media(min-width:640px){.cards{grid-template-columns:1fr 1fr}}

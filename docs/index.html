@@ -30,6 +30,21 @@ header.site{background:var(--navy);padding:3rem 0 1.8rem;border-bottom:3px solid
 main{padding:2.5rem 0 4rem}
 footer.site{background:var(--navy);padding:2rem 0 3rem;color:#b9bdcc;font-size:.8rem;line-height:1.8}
 footer.site a{color:var(--gold)}
+/* category nav */
+.catnav{display:flex;flex-wrap:wrap;gap:.45rem;margin:0 0 2rem}
+.catnav a{font-size:.78rem;padding:.2rem .8rem;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--muted);line-height:1.7}
+.catnav a:hover{border-color:var(--gold);color:var(--gold-text)}
+.catnav a.active{background:var(--navy);color:var(--gold);border-color:var(--navy)}
+.catnav .cnt{font-size:.68rem;margin-left:.3rem;opacity:.75}
+.page-title{font-family:"Noto Serif JP","Hiragino Mincho ProN",serif;font-size:1.3rem;color:var(--navy);margin:0 0 1.5rem;font-weight:600}
+.chip-cat{background:var(--navy);color:var(--gold)}
+/* archive */
+.archive h2{font-family:"Noto Serif JP","Hiragino Mincho ProN",serif;font-size:1.1rem;color:var(--navy);margin:2rem 0 .8rem;font-weight:600}
+.archive ul{list-style:none}
+.archive li{padding:.5rem 0;border-bottom:1px dashed var(--line);font-size:.9rem;display:flex;gap:.8rem;align-items:baseline;flex-wrap:wrap}
+.archive time{color:var(--muted);font-size:.78rem;letter-spacing:.05em;flex-shrink:0}
+.archive a:hover{color:var(--gold-text)}
+.archive .a-cat{font-size:.72rem;color:var(--muted)}
 /* index cards */
 .cards{list-style:none;display:grid;grid-template-columns:1fr;gap:1.5rem}
 @media(min-width:640px){.cards{grid-template-columns:1fr 1fr}}
@@ -104,12 +119,12 @@ article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
   <div class="tagline">世界のニュースを、付加価値のレンズで読み解く ─ 株式会社カクシン</div>
 </div></header>
 <main><div class="wrap">
-
+<nav class="catnav"><a href="./index.html" class="active">最新</a><a href="./category/shohizai.html">消費財・食品<span class="cnt">2</span></a><a href="./category/global.html">海外事例<span class="cnt">2</span></a><a href="./category/kouri.html">小売・流通<span class="cnt">2</span></a><a href="./category/macro.html">マクロ・調査<span class="cnt">1</span></a><a href="./category/gaishoku.html">外食・サービス<span class="cnt">1</span></a><a href="./category/seizo.html">製造業・B2B<span class="cnt">1</span></a><a href="./category/entertainment.html">エンタメ・レジャー<span class="cnt">1</span></a><a href="./category/it-saas.html">IT・SaaS<span class="cnt">1</span></a><a href="./archive.html">全記事一覧</a></nav>
 <ul class="cards">
 <li class="card"><a class="card-link" href="articles/neage-2566-hinme.html">
   <img src="assets/neage-2566-hinme.jpg?v=hoeofa" alt="" loading="lazy">
   <div class="card-body">
-    <div class="card-meta"><time datetime="2026-07-05">2026.07.05</time><span class="chip">値上げ</span><span class="chip">値決め</span><span class="chip">付加価値</span></div>
+    <div class="card-meta"><time datetime="2026-07-05">2026.07.05</time><span class="chip chip-cat">マクロ・調査</span><span class="chip">値上げ</span><span class="chip">値決め</span><span class="chip">付加価値</span></div>
     <h2>値上げ2566品目時代、選ばれる値上げの条件</h2>
     <p>2026年7月、食品だけで2,566品目が値上げされました。しかし顧客に選ばれ続ける値上げと、顧客が離れる値上げがあります。分かれ目はコストの説明ではなく、価値の証明です。</p>
   </div>
@@ -117,7 +132,7 @@ article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
 <li class="card"><a class="card-link" href="articles/mutenkura-shinjuku-premium.html">
   <img src="assets/mutenkura-shinjuku-premium.jpg?v=wv8p9s" alt="" loading="lazy">
   <div class="card-body">
-    <div class="card-meta"><time datetime="2026-07-02">2026.07.02</time><span class="chip">高単価化</span><span class="chip">外食</span><span class="chip">値決め</span></div>
+    <div class="card-meta"><time datetime="2026-07-02">2026.07.02</time><span class="chip chip-cat">外食・サービス</span><span class="chip">高単価化</span><span class="chip">外食</span><span class="chip">値決め</span></div>
     <h2>くら寿司「無添蔵」はなぜ高くても売れるのか</h2>
     <p>低価格回転寿司の代表格くら寿司が、プレミアム業態「無添蔵」最大規模店を新宿に出店します。一皿420円の地魚と茶師十段監修のペアリングが示すのは、値上げではなく「価格の天井を外す」二階建ての値決めです。</p>
   </div>
@@ -125,7 +140,7 @@ article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
 <li class="card"><a class="card-link" href="articles/union-tool-pcb-drill-price-hike.html">
   <img src="assets/union-tool-pcb-drill-price-hike.jpg?v=f42fqj" alt="" loading="lazy">
   <div class="card-body">
-    <div class="card-meta"><time datetime="2026-07-01">2026.07.01</time><span class="chip">価格転嫁</span><span class="chip">B2B</span><span class="chip">値決め</span></div>
+    <div class="card-meta"><time datetime="2026-07-01">2026.07.01</time><span class="chip chip-cat">製造業・B2B</span><span class="chip">価格転嫁</span><span class="chip">B2B</span><span class="chip">値決め</span></div>
     <h2>ユニオンツール、なぜ2割の値上げが通るのか</h2>
     <p>精密切削工具のユニオンツールが、PCBドリルの15〜20%以上の値上げに続き、7月出荷分から再度の価格改定に踏み切りました。それでも過去最高益。値上げが通る会社の構造を分解します。</p>
   </div>
@@ -133,7 +148,7 @@ article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
 <li class="card"><a class="card-link" href="articles/nintendo-switch2-price-strategy.html">
   <img src="assets/nintendo-switch2-price-strategy.jpg?v=191vjvu" alt="" loading="lazy">
   <div class="card-body">
-    <div class="card-meta"><time datetime="2026-07-01">2026.07.01</time><span class="chip">エンタメ</span><span class="chip">価格戦略</span><span class="chip">値上げ</span></div>
+    <div class="card-meta"><time datetime="2026-07-01">2026.07.01</time><span class="chip chip-cat">エンタメ・レジャー</span><span class="chip">エンタメ</span><span class="chip">価格戦略</span><span class="chip">値上げ</span></div>
     <h2>任天堂、1万円値上げでも完売が続く理由</h2>
     <p>Switch 2本体は1万円値上げ、オンラインサービスも7月1日から改定。それでも完売が続くと報じられる任天堂に見るのは、「体験の入場券」としてのハードの値決めです。</p>
   </div>
@@ -141,7 +156,7 @@ article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
 <li class="card"><a class="card-link" href="articles/microsoft-365-price-revision-retention.html">
   <img src="assets/microsoft-365-price-revision-retention.jpg?v=1fgazpq" alt="" loading="lazy">
   <div class="card-body">
-    <div class="card-meta"><time datetime="2026-07-01">2026.07.01</time><span class="chip">SaaS</span><span class="chip">値上げ</span><span class="chip">顧客維持</span></div>
+    <div class="card-meta"><time datetime="2026-07-01">2026.07.01</time><span class="chip chip-cat">IT・SaaS</span><span class="chip">SaaS</span><span class="chip">値上げ</span><span class="chip">顧客維持</span></div>
     <h2>Microsoft 365値上げ、解約させない設計とは</h2>
     <p>2026年7月1日、Microsoft 365商用ライセンスが最大3割超の値上げ。注目すべきは価格ではなく、据え置きプランと更新時適用で解約を防ぐ「継続の設計」です。</p>
   </div>
@@ -149,7 +164,7 @@ article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
 <li class="card"><a class="card-link" href="articles/zojirushi-premium-rice-cooker.html">
   <img src="assets/zojirushi-premium-rice-cooker.jpg?v=invyfz" alt="" loading="lazy">
   <div class="card-body">
-    <div class="card-meta"><time datetime="2026-06-29">2026.06.29</time><span class="chip">差別化</span><span class="chip">脱コモディティ</span><span class="chip">値決め</span></div>
+    <div class="card-meta"><time datetime="2026-06-29">2026.06.29</time><span class="chip chip-cat">消費財・食品</span><span class="chip">差別化</span><span class="chip">脱コモディティ</span><span class="chip">値決め</span></div>
     <h2>象印の炊飯器はなぜ高くても選ばれるのか</h2>
     <p>成熟しきったはずの炊飯器市場で、象印マホービンが増益を続けています。牽引役は最上位モデル「炎舞炊き」。コモディティ化した家電で差別化を成立させた構造を分解します。</p>
   </div>
@@ -157,7 +172,7 @@ article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
 <li class="card"><a class="card-link" href="articles/byd-ev-price-war-lesson.html">
   <img src="assets/byd-ev-price-war-lesson.jpg?v=5qqdae" alt="" loading="lazy">
   <div class="card-body">
-    <div class="card-meta"><time datetime="2026-06-27">2026.06.27</time><span class="chip">価格競争</span><span class="chip">値決め</span><span class="chip">EV</span></div>
+    <div class="card-meta"><time datetime="2026-06-27">2026.06.27</time><span class="chip chip-cat">海外事例</span><span class="chip">価格競争</span><span class="chip">値決め</span><span class="chip">EV</span></div>
     <h2>BYDに学ぶ、値引きが利益と価値を溶かす構造</h2>
     <p>世界最大のEVメーカーBYDの2026年1〜3月期純利益は前年比55%減。値引き率は過去最高の平均10%に達しました。優れた製品を持つ企業でも、値決めを競争に委ねた瞬間に利益が消える構造を読み解きます。</p>
   </div>
@@ -165,7 +180,7 @@ article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
 <li class="card"><a class="card-link" href="articles/shimamura-pb-premium-record-profit.html">
   <img src="assets/shimamura-pb-premium-record-profit.jpg?v=zsc3kg" alt="" loading="lazy">
   <div class="card-body">
-    <div class="card-meta"><time datetime="2026-06-26">2026.06.26</time><span class="chip">高付加価値</span><span class="chip">最高益</span><span class="chip">小売</span></div>
+    <div class="card-meta"><time datetime="2026-06-26">2026.06.26</time><span class="chip chip-cat">小売・流通</span><span class="chip">高付加価値</span><span class="chip">最高益</span><span class="chip">小売</span></div>
     <h2>しまむら最高益、なぜPBは高くても売れるのか</h2>
     <p>しまむらの2026年3〜5月期は純利益128億円と3年連続の最高益。低価格チェーンの利益を押し上げたのは、値下げではなく機能性PBと高価格帯ラインでした。安さの王者が単価で稼ぐ構造を読み解きます。</p>
   </div>
@@ -173,7 +188,7 @@ article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
 <li class="card"><a class="card-link" href="articles/aeon-takiyama-experience-mall.html">
   <img src="assets/aeon-takiyama-experience-mall.jpg?v=b2l4gj" alt="" loading="lazy">
   <div class="card-body">
-    <div class="card-meta"><time datetime="2026-06-26">2026.06.26</time><span class="chip">体験型店舗</span><span class="chip">小売</span><span class="chip">差別化</span></div>
+    <div class="card-meta"><time datetime="2026-06-26">2026.06.26</time><span class="chip chip-cat">小売・流通</span><span class="chip">体験型店舗</span><span class="chip">小売</span><span class="chip">差別化</span></div>
     <h2>イオン八王子滝山はなぜ売場より体験を選んだのか</h2>
     <p>6月26日開業の「イオン八王子滝山」は、イオンモール運営施設で初めて生鮮売場を持たない体験特化型です。物販はAI物流のネットスーパーへ、リアルは比較されない体験へ。小売の値決めの土俵を変える設計です。</p>
   </div>
@@ -181,7 +196,7 @@ article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
 <li class="card"><a class="card-link" href="articles/delta-premium-cabin-strategy.html">
   <img src="assets/delta-premium-cabin-strategy.jpg?v=1udqdou" alt="" loading="lazy">
   <div class="card-body">
-    <div class="card-meta"><time datetime="2026-06-24">2026.06.24</time><span class="chip">プレミアム戦略</span><span class="chip">値決め</span><span class="chip">航空業界</span></div>
+    <div class="card-meta"><time datetime="2026-06-24">2026.06.24</time><span class="chip chip-cat">海外事例</span><span class="chip">プレミアム戦略</span><span class="chip">値決め</span><span class="chip">航空業界</span></div>
     <h2>デルタ航空、なぜ「プレミアム」が主役になれたのか</h2>
     <p>米デルタ航空でプレミアム席の収入がエコノミーを初めて逆転。100年目の主役交代の裏には、「移動」ではなく「機内で過ごす時間の質」に値段をつけ直した15年がかりの価値設計がありました。</p>
   </div>
@@ -189,7 +204,7 @@ article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
 <li class="card"><a class="card-link" href="articles/grand-seiko-premium-price-hike.html">
   <img src="assets/grand-seiko-premium-price-hike.jpg?v=4nolmg" alt="" loading="lazy">
   <div class="card-body">
-    <div class="card-meta"><time datetime="2026-06-23">2026.06.23</time><span class="chip">プレミアム戦略</span><span class="chip">値決め</span><span class="chip">ブランド</span></div>
+    <div class="card-meta"><time datetime="2026-06-23">2026.06.23</time><span class="chip chip-cat">消費財・食品</span><span class="chip">プレミアム戦略</span><span class="chip">値決め</span><span class="chip">ブランド</span></div>
     <h2>グランドセイコー、385万円値上げでも売れる理由</h2>
     <p>最大44%・385万円の値上げを打ち出したグランドセイコー。原価転嫁ではなく「世界のラグジュアリーと並ぶ座標」への再ポジショニングこそが、この値決めの正体です。</p>
   </div>

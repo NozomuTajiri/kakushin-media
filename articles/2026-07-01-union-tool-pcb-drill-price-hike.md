@@ -7,6 +7,7 @@ company: ユニオンツール
 source_name: ユニオンツール「価格改定のお知らせ」
 source_url: https://www.uniontool.co.jp/product/news/
 tags: 価格転嫁, B2B, 値決め
+category: 製造業・B2B
 genjo: 消耗品として相見積もりにかけられ、単価で比較されている
 riso: 顧客の歩留まり改善への貢献が、価格の根拠として認められている
 chart: {"title":"ユニオンツールの営業利益","unit":"億円","labels":["2025年12月期","2026年12月期予想"],"values":[87,100],"source":"ユニオンツール決算発表"}

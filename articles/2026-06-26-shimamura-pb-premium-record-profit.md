@@ -7,6 +7,7 @@ company: しまむら
 source_name: 日本経済新聞「しまむらの3〜5月、3年連続最高益 PBやキャラクター商品好調」
 source_url: https://www.nikkei.com/article/DGXZQOUB269HH0W6A620C2000000/
 tags: 高付加価値, 最高益, 小売
+category: 小売・流通
 genjo: プライベートブランドは「安さ」だけで選ばれている
 riso: 機能という明確な価値で、PBが指名買いされている
 chart: {"title":"しまむら 2026年3〜5月期の前年同期比伸び率","unit":"%","labels":["売上高","営業利益","純利益"],"values":[8,17,19],"source":"日本経済新聞"}

@@ -7,6 +7,7 @@ company: セイコーウオッチ（グランドセイコー）
 source_name: 日本経済新聞「超株高で高級ブランド強気の値上げ グランドセイコーは1265万円」
 source_url: https://www.nikkei.com/article/DGXZQOUC23A9C0T20C26A6000000/
 tags: プレミアム戦略, 値決め, ブランド
+category: 消費財・食品
 genjo: 値上げすると顧客が離れるという前提で価格を据え置いている
 riso: 価格そのものがブランドの価値を物語る状態になっている
 chart: {"title":"グランドセイコー SLGA027の希望小売価格","unit":"万円","labels":["改定前","改定後"],"values":[880,1265],"source":"日本経済新聞"}
