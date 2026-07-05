@@ -94,9 +94,14 @@ function heroSvg(slug, w = 1200, h = 360) {
 
 // ---------- ヒーロー画像(assets/<slug>.jpg があれば使用、なければブランドアートSVG) ----------
 const ASSETS_DIR = join(ROOT, "assets");
+function assetVersion(slug) {
+  // 内容ハッシュでキャッシュバスト(差し替え時に旧キャッシュが残らないように)
+  const buf = readFileSync(join(ASSETS_DIR, `${slug}.jpg`));
+  return hashOf(buf.subarray(0, 4096).toString("latin1")).toString(36);
+}
 function heroFor(slug, prefix, w, h) {
   if (existsSync(join(ASSETS_DIR, `${slug}.jpg`))) {
-    return `<img src="${prefix}assets/${slug}.jpg" alt="" loading="lazy" width="1200" height="800">`;
+    return `<img src="${prefix}assets/${slug}.jpg?v=${assetVersion(slug)}" alt="" loading="lazy">`;
   }
   return heroSvg(slug, w, h);
 }
@@ -142,6 +147,7 @@ footer.site a{color:var(--gold)}
 .card:hover{box-shadow:0 8px 22px rgba(33,41,71,.13);transform:translateY(-2px)}
 .card a.card-link{display:block}
 .card svg{display:block;width:100%;height:auto}
+.card img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
 .card-body{padding:1rem 1.2rem 1.35rem}
 .card-meta{display:flex;align-items:center;gap:.6rem;margin-bottom:.4rem}
 .card time{font-size:.75rem;color:var(--muted);letter-spacing:.1em}
@@ -154,6 +160,7 @@ footer.site a{color:var(--gold)}
 .crumb a:hover{color:var(--gold-text)}
 .hero{border-radius:10px;overflow:hidden;margin-bottom:2rem;line-height:0}
 .hero svg{width:100%;height:auto}
+.hero img{display:block;width:100%;height:auto;aspect-ratio:21/9;object-fit:cover}
 article h1{font-family:"Noto Serif JP","Hiragino Mincho ProN",serif;font-size:1.75rem;line-height:1.55;font-weight:600;margin-bottom:.9rem;color:var(--navy)}
 .meta{font-size:.8rem;color:var(--muted);letter-spacing:.06em;padding-bottom:1.6rem;border-bottom:1px solid var(--line);margin-bottom:2rem;display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
 article .lead{font-size:1.02rem;color:#3a3f52;background:var(--cream);border-left:3px solid var(--gold);padding:1rem 1.2rem;margin-bottom:1.8rem;line-height:2;border-radius:0 4px 4px 0}
