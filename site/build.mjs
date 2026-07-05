@@ -25,16 +25,72 @@ function inline(text) {
   return t;
 }
 
-function mdToHtml(md) {
+function mdToHtml(md, meta = {}) {
   const blocks = md.split(/\n\s*\n/).map((b) => b.trim()).filter(Boolean);
   return blocks
     .map((b) => {
+      if (b === "{{chart}}") return meta.chart ? renderChart(meta.chart) : "";
+      if (b === "{{vs}}") return meta.vs ? renderVs(meta.vs) : "";
+      if (b === "{{flow}}") return meta.flow ? renderFlow(meta.flow) : "";
       if (b.startsWith("### ")) return `<h3>${inline(b.slice(4))}</h3>`;
       if (b.startsWith("## ")) return `<h2>${inline(b.slice(3))}</h2>`;
       if (b === "---") return "<hr>";
       return `<p>${inline(b).replace(/\n/g, "<br>")}</p>`;
     })
     .join("\n");
+}
+
+// ---------- 記事内ビジュアル(グラフ/対比図/変換フロー) ----------
+function renderChart(json) {
+  let c;
+  try { c = JSON.parse(json); } catch { return ""; }
+  const labels = c.labels || [];
+  const values = (c.values || []).map(Number);
+  if (!labels.length || labels.length !== values.length) return "";
+  const max = Math.max(...values);
+  const W = 640, H = 300, padL = 20, padB = 46, padT = 40;
+  const bw = (W - padL * 2) / labels.length;
+  let bars = "";
+  values.forEach((v, i) => {
+    const h = Math.max(4, (v / max) * (H - padT - padB));
+    const x = padL + i * bw + bw * 0.18;
+    const y = H - padB - h;
+    const cx = padL + i * bw + bw / 2;
+    bars += `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${(bw * 0.64).toFixed(1)}" height="${h.toFixed(1)}" rx="3" fill="#cca433"/>
+<text x="${cx.toFixed(1)}" y="${(y - 9).toFixed(1)}" text-anchor="middle" font-size="15" font-weight="700" fill="#212947">${v.toLocaleString("ja-JP")}</text>
+<text x="${cx.toFixed(1)}" y="${H - padB + 26}" text-anchor="middle" font-size="14" fill="#5c5e6d">${escapeHtml(labels[i])}</text>`;
+  });
+  return `<figure class="viz">
+<figcaption class="viz-title">${escapeHtml(c.title || "")}${c.unit ? `<span class="viz-unit">(${escapeHtml(c.unit)})</span>` : ""}</figcaption>
+<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${escapeHtml(c.title || "グラフ")}">
+<line x1="${padL}" y1="${H - padB}" x2="${W - padL}" y2="${H - padB}" stroke="#e7e0d0" stroke-width="1.5"/>
+${bars}
+</svg>
+${c.source ? `<div class="viz-source">出典: ${escapeHtml(c.source)}</div>` : ""}
+</figure>`;
+}
+
+function renderVs(spec) {
+  const rows = spec.split(" / ").map((r) => r.split("|").map((s) => s.trim()));
+  if (rows.length < 2 || rows[0].length < 2) return "";
+  const [heads, ...body] = rows;
+  const col = (i) => body.map((r) => `<li>${escapeHtml(r[i] || "")}</li>`).join("");
+  return `<div class="vs">
+<div class="vs-col vs-a"><div class="vs-head">${escapeHtml(heads[0])}</div><ul>${col(0)}</ul></div>
+<div class="vs-col vs-b"><div class="vs-head">${escapeHtml(heads[1])}</div><ul>${col(1)}</ul></div>
+</div>`;
+}
+
+function renderFlow(spec) {
+  const steps = spec.split(" / ").map((s) => s.split("|").map((x) => x.trim()));
+  if (steps.length < 2) return "";
+  const arrow = `<div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 40 40" width="26" height="26"><path d="M8 20h20m-8-8 8 8-8 8" fill="none" stroke="#cca433" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>`;
+  return `<div class="flow">${steps
+    .map(
+      (s, i) =>
+        `${i ? arrow : ""}<div class="flow-step"><div class="flow-name">${escapeHtml(s[0])}</div>${s[1] ? `<div class="flow-desc">${escapeHtml(s[1])}</div>` : ""}</div>`
+    )
+    .join("")}</div>`;
 }
 
 function parseFrontmatter(raw) {
@@ -179,6 +235,27 @@ article h3{font-size:1.05rem;margin:2rem 0 .75rem;color:var(--navy)}
 article p{margin-bottom:1.4rem;text-align:justify}
 article a{color:var(--gold-text);border-bottom:1px solid currentColor}
 article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
+/* 記事内ビジュアル */
+.viz{margin:2.2rem 0;padding:1.4rem 1.4rem 1.1rem;background:#fff;border:1px solid var(--line);border-radius:10px}
+.viz-title{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:.9rem}
+.viz-unit{font-weight:400;color:var(--muted);font-size:.8rem;margin-left:.4rem}
+.viz svg{width:100%;height:auto;display:block}
+.viz-source{font-size:.75rem;color:var(--muted);margin-top:.5rem;text-align:right}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin:2.2rem 0}
+.vs-col{border-radius:8px;overflow:hidden;border:1px solid var(--line);background:#fff}
+.vs-head{padding:.55rem 1rem;font-weight:700;font-size:.92rem;text-align:center}
+.vs-a .vs-head{background:#f1eee5;color:#5a5a55}
+.vs-b{border-color:var(--navy)}
+.vs-b .vs-head{background:var(--navy);color:var(--gold)}
+.vs ul{list-style:none;padding:.7rem 1rem;margin:0}
+.vs li{font-size:.86rem;line-height:1.8;padding:.35rem 0;border-bottom:1px dashed var(--line)}
+.vs li:last-child{border-bottom:none}
+.flow{display:flex;align-items:stretch;gap:.5rem;margin:2.2rem 0;flex-wrap:wrap}
+.flow-step{flex:1;min-width:130px;background:var(--cream);border:1px solid var(--line);border-radius:8px;padding:.8rem .9rem;text-align:center}
+.flow-name{font-weight:700;color:var(--navy);font-size:.95rem}
+.flow-desc{font-size:.78rem;color:var(--muted);line-height:1.7;margin-top:.25rem}
+.flow-arrow{align-self:center}
+@media(max-width:560px){.vs{grid-template-columns:1fr}.flow{flex-direction:column}.flow-arrow{transform:rotate(90deg);align-self:center}}
 .source{margin-top:3rem;padding:1.1rem 1.25rem;background:var(--cream);border-radius:6px;font-size:.82rem;color:#555;line-height:1.9}
 .source a{color:var(--gold-text);border-bottom:1px solid currentColor}
 .credit{margin-top:2.5rem;font-size:.82rem;color:var(--muted);line-height:1.9}
@@ -248,7 +325,7 @@ for (const p of posts) {
 <div class="meta"><time datetime="${p.date}">${p.date.replaceAll("-", ".")}</time>${chips(p.tags)}</div>
 <p class="lead">${escapeHtml(p.excerpt)}</p>
 ${transformBlock(p)}
-${mdToHtml(p.body)}
+${mdToHtml(p.body, p)}
 ${p.source_name ? `<div class="source">参考: <a href="${p.source_url}" rel="noopener">${escapeHtml(p.source_name)}</a></div>` : ""}
 <div class="credit">本記事は、${escapeHtml(CONFIG.company)}が提唱する付加価値経営の視点でニュースを解説するものです。</div>
 </article>`;

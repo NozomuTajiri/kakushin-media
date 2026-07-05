@@ -68,6 +68,27 @@ article h3{font-size:1.05rem;margin:2rem 0 .75rem;color:var(--navy)}
 article p{margin-bottom:1.4rem;text-align:justify}
 article a{color:var(--gold-text);border-bottom:1px solid currentColor}
 article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
+/* 記事内ビジュアル */
+.viz{margin:2.2rem 0;padding:1.4rem 1.4rem 1.1rem;background:#fff;border:1px solid var(--line);border-radius:10px}
+.viz-title{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:.9rem}
+.viz-unit{font-weight:400;color:var(--muted);font-size:.8rem;margin-left:.4rem}
+.viz svg{width:100%;height:auto;display:block}
+.viz-source{font-size:.75rem;color:var(--muted);margin-top:.5rem;text-align:right}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin:2.2rem 0}
+.vs-col{border-radius:8px;overflow:hidden;border:1px solid var(--line);background:#fff}
+.vs-head{padding:.55rem 1rem;font-weight:700;font-size:.92rem;text-align:center}
+.vs-a .vs-head{background:#f1eee5;color:#5a5a55}
+.vs-b{border-color:var(--navy)}
+.vs-b .vs-head{background:var(--navy);color:var(--gold)}
+.vs ul{list-style:none;padding:.7rem 1rem;margin:0}
+.vs li{font-size:.86rem;line-height:1.8;padding:.35rem 0;border-bottom:1px dashed var(--line)}
+.vs li:last-child{border-bottom:none}
+.flow{display:flex;align-items:stretch;gap:.5rem;margin:2.2rem 0;flex-wrap:wrap}
+.flow-step{flex:1;min-width:130px;background:var(--cream);border:1px solid var(--line);border-radius:8px;padding:.8rem .9rem;text-align:center}
+.flow-name{font-weight:700;color:var(--navy);font-size:.95rem}
+.flow-desc{font-size:.78rem;color:var(--muted);line-height:1.7;margin-top:.25rem}
+.flow-arrow{align-self:center}
+@media(max-width:560px){.vs{grid-template-columns:1fr}.flow{flex-direction:column}.flow-arrow{transform:rotate(90deg);align-self:center}}
 .source{margin-top:3rem;padding:1.1rem 1.25rem;background:var(--cream);border-radius:6px;font-size:.82rem;color:#555;line-height:1.9}
 .source a{color:var(--gold-text);border-bottom:1px solid currentColor}
 .credit{margin-top:2.5rem;font-size:.82rem;color:var(--muted);line-height:1.9}
@@ -94,10 +115,26 @@ article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
 </div>
 <h2>何が起きたか</h2>
 <p>象印マホービンが発表した2025年12月〜2026年5月期決算は、売上高512億円(前年同期比2%増)、営業利益52億円(同7%増)、純利益35億円(同4%増)でした。国内で高級炊飯器の最上位モデル「炎舞炊き」や加湿器の販売が堅調に推移し、円安で上昇した原材料などの輸入コストは価格転嫁で吸収。12〜2月期時点では純利益が前年同期比20%増と、高価格帯炊飯器が利益を牽引しています。</p>
+<figure class="viz">
+<figcaption class="viz-title">象印マホービン 2025年12月〜2026年5月期の前年同期比伸び率<span class="viz-unit">(%)</span></figcaption>
+<svg viewBox="0 0 640 300" role="img" aria-label="象印マホービン 2025年12月〜2026年5月期の前年同期比伸び率">
+<line x1="20" y1="254" x2="620" y2="254" stroke="#e7e0d0" stroke-width="1.5"/>
+<rect x="56.0" y="192.9" width="128.0" height="61.1" rx="3" fill="#cca433"/>
+<text x="120.0" y="183.9" text-anchor="middle" font-size="15" font-weight="700" fill="#212947">2</text>
+<text x="120.0" y="280" text-anchor="middle" font-size="14" fill="#5c5e6d">売上高</text><rect x="256.0" y="40.0" width="128.0" height="214.0" rx="3" fill="#cca433"/>
+<text x="320.0" y="31.0" text-anchor="middle" font-size="15" font-weight="700" fill="#212947">7</text>
+<text x="320.0" y="280" text-anchor="middle" font-size="14" fill="#5c5e6d">営業利益</text><rect x="456.0" y="131.7" width="128.0" height="122.3" rx="3" fill="#cca433"/>
+<text x="520.0" y="122.7" text-anchor="middle" font-size="15" font-weight="700" fill="#212947">4</text>
+<text x="520.0" y="280" text-anchor="middle" font-size="14" fill="#5c5e6d">純利益</text>
+</svg>
+<div class="viz-source">出典: 日本経済新聞</div>
+</figure>
 <h2>顧客は誰で、何に困っているか</h2>
 <p>炊飯器は一家に一台が行き渡った成熟市場で、「炊ける」という機能だけならば低価格品で十分です。それでも高価格帯モデルを選ぶ顧客がいます。この顧客が困っているのは「ご飯が炊けないこと」ではありません。「毎日食べるものだからこそ、妥協したくない」「外食やパックご飯との違いを家庭で実感したい」という、生活の質への欲求です。物価高で外食を控える家庭が増えるなか、家で食べる一杯の満足度を上げることは、むしろ合理的な支出になっていると考えられます。毎日3回、10年使う道具であれば、価格差は一食あたり数円に薄まるからです。</p>
 <h2>付加価値の構造──「炊飯器」ではなく「炊きあがり」を売る</h2>
-<p>「炊ける」という機能はとうにコモディティ化しました。象印が売っているのはその先です。「炎舞炊き」は複数のヒーターで釜内に複雑な熱対流を起こすという機能を、「かまど炊きのような炊きあがり」という便益に変換し、さらに「毎日の食事が楽しみになる」という価値に昇華させています。重要なのは、この価値が店頭の価格比較表では測れないことです。容量や消費電力のスペックで並べられれば安いほうが勝ちますが、「ご飯のおいしさ」という軸を立てた瞬間、比較の土俵そのものが変わります。国内では競合他社も10万円を超える高価格帯炊飯器を投入しており、業界全体が「価格の勝負」から「炊きあがりの勝負」に土俵を移しつつあります。コモディティ市場からの脱却とは、製品を変えることではなく、顧客が比較する物差しを変えることなのです。</p>
+<p>「炊ける」という機能はとうにコモディティ化しました。象印が売っているのはその先です。「炎舞炊き」は複数のヒーターで釜内に複雑な熱対流を起こすという機能を、「かまど炊きのような炊きあがり」という便益に変換し、さらに「毎日の食事が楽しみになる」という価値に昇華させています。</p>
+<div class="flow"><div class="flow-step"><div class="flow-name">機能</div><div class="flow-desc">複数のヒーターで釜内に複雑な熱対流を起こす</div></div><div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 40 40" width="26" height="26"><path d="M8 20h20m-8-8 8 8-8 8" fill="none" stroke="#cca433" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="flow-step"><div class="flow-name">便益</div><div class="flow-desc">かまど炊きのような炊きあがり</div></div><div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 40 40" width="26" height="26"><path d="M8 20h20m-8-8 8 8-8 8" fill="none" stroke="#cca433" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="flow-step"><div class="flow-name">価値</div><div class="flow-desc">毎日の食事が楽しみになる</div></div></div>
+<p>重要なのは、この価値が店頭の価格比較表では測れないことです。容量や消費電力のスペックで並べられれば安いほうが勝ちますが、「ご飯のおいしさ」という軸を立てた瞬間、比較の土俵そのものが変わります。国内では競合他社も10万円を超える高価格帯炊飯器を投入しており、業界全体が「価格の勝負」から「炊きあがりの勝負」に土俵を移しつつあります。コモディティ市場からの脱却とは、製品を変えることではなく、顧客が比較する物差しを変えることなのです。</p>
 <h2>値決めへの接続</h2>
 <p>象印の回収構造は二段構えです。第一に、高価格帯モデルの構成比を高めることで平均単価と利益率を引き上げる。第二に、円安による原材料コストの上昇分を価格転嫁で吸収する。注目すべきは、この価格転嫁が顧客離れを起こさず増益につながっている点です。「おいしさ」という独自の物差しで選ばれている商品は、数千円の価格差で乗り換えられにくい。もし「炊ける」だけの機能で戦っていたなら、コスト上昇分の転嫁はそのまま販売数量の減少に跳ね返っていたはずです。差別化は、値上げ局面で初めて真価を発揮します。平時に築いた「高くてもこれがいい」という指名買いの構造が、コスト上昇という危機を利益で乗り切る体力になっているのです。</p>
 <h2>今日の問い</h2>

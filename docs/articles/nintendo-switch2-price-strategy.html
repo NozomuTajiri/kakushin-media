@@ -68,6 +68,27 @@ article h3{font-size:1.05rem;margin:2rem 0 .75rem;color:var(--navy)}
 article p{margin-bottom:1.4rem;text-align:justify}
 article a{color:var(--gold-text);border-bottom:1px solid currentColor}
 article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
+/* 記事内ビジュアル */
+.viz{margin:2.2rem 0;padding:1.4rem 1.4rem 1.1rem;background:#fff;border:1px solid var(--line);border-radius:10px}
+.viz-title{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:.9rem}
+.viz-unit{font-weight:400;color:var(--muted);font-size:.8rem;margin-left:.4rem}
+.viz svg{width:100%;height:auto;display:block}
+.viz-source{font-size:.75rem;color:var(--muted);margin-top:.5rem;text-align:right}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin:2.2rem 0}
+.vs-col{border-radius:8px;overflow:hidden;border:1px solid var(--line);background:#fff}
+.vs-head{padding:.55rem 1rem;font-weight:700;font-size:.92rem;text-align:center}
+.vs-a .vs-head{background:#f1eee5;color:#5a5a55}
+.vs-b{border-color:var(--navy)}
+.vs-b .vs-head{background:var(--navy);color:var(--gold)}
+.vs ul{list-style:none;padding:.7rem 1rem;margin:0}
+.vs li{font-size:.86rem;line-height:1.8;padding:.35rem 0;border-bottom:1px dashed var(--line)}
+.vs li:last-child{border-bottom:none}
+.flow{display:flex;align-items:stretch;gap:.5rem;margin:2.2rem 0;flex-wrap:wrap}
+.flow-step{flex:1;min-width:130px;background:var(--cream);border:1px solid var(--line);border-radius:8px;padding:.8rem .9rem;text-align:center}
+.flow-name{font-weight:700;color:var(--navy);font-size:.95rem}
+.flow-desc{font-size:.78rem;color:var(--muted);line-height:1.7;margin-top:.25rem}
+.flow-arrow{align-self:center}
+@media(max-width:560px){.vs{grid-template-columns:1fr}.flow{flex-direction:column}.flow-arrow{transform:rotate(90deg);align-self:center}}
 .source{margin-top:3rem;padding:1.1rem 1.25rem;background:var(--cream);border-radius:6px;font-size:.82rem;color:#555;line-height:1.9}
 .source a{color:var(--gold-text);border-bottom:1px solid currentColor}
 .credit{margin-top:2.5rem;font-size:.82rem;color:var(--muted);line-height:1.9}
@@ -94,11 +115,25 @@ article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
 </div>
 <h2>何が起きたか</h2>
 <p>任天堂は2026年5月8日、Nintendo Switch 2(国内版)の希望小売価格を5月25日から4万9980円→5万9980円に改定すると発表しました。サブスクリプションのNintendo Switch Onlineも7月1日から改定され、個人12カ月プランは2400円→3000円に。理由は市場環境の変化と原材料費などのコスト上昇です。それでも日本経済新聞は、値上げを控えた5月時点でSwitch 2の完売が続いていると報じました。</p>
+<figure class="viz">
+<figcaption class="viz-title">Nintendo Switch 2 希望小売価格(国内版)<span class="viz-unit">(円)</span></figcaption>
+<svg viewBox="0 0 640 300" role="img" aria-label="Nintendo Switch 2 希望小売価格(国内版)">
+<line x1="20" y1="254" x2="620" y2="254" stroke="#e7e0d0" stroke-width="1.5"/>
+<rect x="74.0" y="75.7" width="192.0" height="178.3" rx="3" fill="#cca433"/>
+<text x="170.0" y="66.7" text-anchor="middle" font-size="15" font-weight="700" fill="#212947">49,980</text>
+<text x="170.0" y="280" text-anchor="middle" font-size="14" fill="#5c5e6d">改定前</text><rect x="374.0" y="40.0" width="192.0" height="214.0" rx="3" fill="#cca433"/>
+<text x="470.0" y="31.0" text-anchor="middle" font-size="15" font-weight="700" fill="#212947">59,980</text>
+<text x="470.0" y="280" text-anchor="middle" font-size="14" fill="#5c5e6d">改定後</text>
+</svg>
+<div class="viz-source">出典: 任天堂発表(2026年5月8日)</div>
+</figure>
 <h2>顧客は誰で、何に困っているか</h2>
 <p>顧客は子どもを持つ家庭と、世界中のゲームファンです。彼らが買っているのはプラスチックの筐体ではありません。家族や友人と同じ画面を囲む時間、マリオやゼルダといった「そこでしか会えないキャラクター」と過ごす体験です。困りごとの本質は「面白い遊びが見つからない」ことではなく、「外れを引きたくない」こと。数万円を投じるなら、家族全員が確実に楽しめる保証がほしい。任天堂のIPは、この「失敗しない娯楽への投資」という潜在ニーズに応えています。</p>
 <h2>付加価値の構造──ハードは「体験への入場券」</h2>
 <p>Switch 2は発売4日間で世界350万台を販売し、その後も任天堂ハード史上最速ペースの普及が続いたと報じられています。この需要の強さが示すのは、ハードの価格が顧客の感じる価値を下回っていた、という事実です。</p>
-<p>構造を分解しましょう。機能は、携帯もテレビ接続もできるゲーム機。便益は、いつでもどこでも家族や友人と遊べること。そして価値は、任天堂のソフトでしか得られない体験への「入場権」です。ゲーム機は単体では価値を持たず、独占ソフト群と結びついて初めて価値が生まれます。つまり顧客が払っているのはハードの原価に対する対価ではなく、この先数年間の「約束された楽しい時間」への前払いです。だからこそ、1万円の値上げが購入判断を覆さない。体験全体の価値から見れば、入場券の値上げは相対的に小さいのです。</p>
+<p>構造を分解しましょう。機能は、携帯もテレビ接続もできるゲーム機。便益は、いつでもどこでも家族や友人と遊べること。そして価値は、任天堂のソフトでしか得られない体験への「入場権」です。</p>
+<div class="flow"><div class="flow-step"><div class="flow-name">機能</div><div class="flow-desc">携帯もテレビ接続もできるゲーム機</div></div><div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 40 40" width="26" height="26"><path d="M8 20h20m-8-8 8 8-8 8" fill="none" stroke="#cca433" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="flow-step"><div class="flow-name">便益</div><div class="flow-desc">いつでもどこでも家族や友人と遊べる</div></div><div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 40 40" width="26" height="26"><path d="M8 20h20m-8-8 8 8-8 8" fill="none" stroke="#cca433" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="flow-step"><div class="flow-name">価値</div><div class="flow-desc">任天堂のソフトでしか得られない体験への入場権</div></div></div>
+<p>ゲーム機は単体では価値を持たず、独占ソフト群と結びついて初めて価値が生まれます。つまり顧客が払っているのはハードの原価に対する対価ではなく、この先数年間の「約束された楽しい時間」への前払いです。だからこそ、1万円の値上げが購入判断を覆さない。体験全体の価値から見れば、入場券の値上げは相対的に小さいのです。</p>
 <h2>値決めへの接続</h2>
 <p>ゲーム業界では従来、ハードを安く売り、ソフトで回収するのが定石でした。今回の任天堂は、発売からわずか1年でハード自体を約2割値上げし、さらにサブスクも同時に改定するという、体験の入口と継続課金の両方で価値を回収する構えです。円安・原材料高というコスト要因はあるにせよ、需要が供給を上回っている局面を選んで実行した点に、値決めの意思を感じます。売れているときこそ、価格を修正できる最良のタイミングである──需要の強さを確認してから動くこの順序は、多くの経営者にとって示唆的と考えられます。</p>
 <h2>今日の問い</h2>

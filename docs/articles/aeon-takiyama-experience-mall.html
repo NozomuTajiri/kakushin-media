@@ -68,6 +68,27 @@ article h3{font-size:1.05rem;margin:2rem 0 .75rem;color:var(--navy)}
 article p{margin-bottom:1.4rem;text-align:justify}
 article a{color:var(--gold-text);border-bottom:1px solid currentColor}
 article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
+/* 記事内ビジュアル */
+.viz{margin:2.2rem 0;padding:1.4rem 1.4rem 1.1rem;background:#fff;border:1px solid var(--line);border-radius:10px}
+.viz-title{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:.9rem}
+.viz-unit{font-weight:400;color:var(--muted);font-size:.8rem;margin-left:.4rem}
+.viz svg{width:100%;height:auto;display:block}
+.viz-source{font-size:.75rem;color:var(--muted);margin-top:.5rem;text-align:right}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin:2.2rem 0}
+.vs-col{border-radius:8px;overflow:hidden;border:1px solid var(--line);background:#fff}
+.vs-head{padding:.55rem 1rem;font-weight:700;font-size:.92rem;text-align:center}
+.vs-a .vs-head{background:#f1eee5;color:#5a5a55}
+.vs-b{border-color:var(--navy)}
+.vs-b .vs-head{background:var(--navy);color:var(--gold)}
+.vs ul{list-style:none;padding:.7rem 1rem;margin:0}
+.vs li{font-size:.86rem;line-height:1.8;padding:.35rem 0;border-bottom:1px dashed var(--line)}
+.vs li:last-child{border-bottom:none}
+.flow{display:flex;align-items:stretch;gap:.5rem;margin:2.2rem 0;flex-wrap:wrap}
+.flow-step{flex:1;min-width:130px;background:var(--cream);border:1px solid var(--line);border-radius:8px;padding:.8rem .9rem;text-align:center}
+.flow-name{font-weight:700;color:var(--navy);font-size:.95rem}
+.flow-desc{font-size:.78rem;color:var(--muted);line-height:1.7;margin-top:.25rem}
+.flow-arrow{align-self:center}
+@media(max-width:560px){.vs{grid-template-columns:1fr}.flow{flex-direction:column}.flow-arrow{transform:rotate(90deg);align-self:center}}
 .source{margin-top:3rem;padding:1.1rem 1.25rem;background:var(--cream);border-radius:6px;font-size:.82rem;color:#555;line-height:1.9}
 .source a{color:var(--gold-text);border-bottom:1px solid currentColor}
 .credit{margin-top:2.5rem;font-size:.82rem;color:var(--muted);line-height:1.9}
@@ -97,7 +118,13 @@ article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
 <h2>顧客は誰で、何に困っているか</h2>
 <p>モノを買うだけならECで済む時代、郊外の小売にとって本当の競合は隣のスーパーではなく、顧客のスマホの中にあります。顧客の困りごとはもはや「品揃えと安さ」ではなく、「休日の時間をどう豊かに過ごすか」に移りました。家族連れ、ペットと暮らす人、映画やアウトドアを楽しみたい大人。彼らが困っているのは、買い物ついでではない「わざわざ出かける理由」が郊外に少ないことです。イオン八王子滝山は、この時間消費のニーズに施設全体で応える設計になっています。</p>
 <h2>付加価値の構造──物販はネットへ、リアルは体験へ</h2>
-<p>施策を「機能→便益→価値」で分解します。八王子市初のIMAXという設備は機能にすぎません。それが「ここでしか観られない映画体験」という便益になり、「この施設に来る目的」という価値に変わります。ゼネラルマネージャーの吉本氏自身が、IMAXは「イオン八王子滝山に来る目的になる」と語っています。ゴルフクラブの試打や3D足型測定ができるスポーツ店、ボルダリング体験、秋に開業する約3,300平方メートルの菓子工房「アトリエうかい」、屋上には400席の焚火・BBQ施設。いずれも「その場でしか成立しない体験」です。さらに象徴的なのは、AI×ロボティクスの物流拠点(CFC)を併設し、日常の食品購買はネットスーパー「Green Beans」に委ねる構造です。注文から3時間ほどで受け取れる仕組みを整えることで、定番の物販は効率の世界へ、リアルの売場は体験の世界へと、役割分担を建物のレベルで割り切りました。約560平方メートルの芝生広場「noNIWA」や道の駅と連携した地域マルシェも、売上ではなく「また来たくなる時間」への投資と位置づけられます。</p>
+<p>施策を「機能→便益→価値」で分解します。八王子市初のIMAXという設備は機能にすぎません。それが「ここでしか観られない映画体験」という便益になり、「この施設に来る目的」という価値に変わります。ゼネラルマネージャーの吉本氏自身が、IMAXは「イオン八王子滝山に来る目的になる」と語っています。</p>
+<div class="flow"><div class="flow-step"><div class="flow-name">機能</div><div class="flow-desc">八王子市初のIMAXという設備</div></div><div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 40 40" width="26" height="26"><path d="M8 20h20m-8-8 8 8-8 8" fill="none" stroke="#cca433" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="flow-step"><div class="flow-name">便益</div><div class="flow-desc">ここでしか観られない映画体験</div></div><div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 40 40" width="26" height="26"><path d="M8 20h20m-8-8 8 8-8 8" fill="none" stroke="#cca433" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="flow-step"><div class="flow-name">価値</div><div class="flow-desc">この施設に来る目的そのもの</div></div></div>
+<p>ゴルフクラブの試打や3D足型測定ができるスポーツ店、ボルダリング体験、秋に開業する約3,300平方メートルの菓子工房「アトリエうかい」、屋上には400席の焚火・BBQ施設。いずれも「その場でしか成立しない体験」です。さらに象徴的なのは、AI×ロボティクスの物流拠点(CFC)を併設し、日常の食品購買はネットスーパー「Green Beans」に委ねる構造です。注文から3時間ほどで受け取れる仕組みを整えることで、定番の物販は効率の世界へ、リアルの売場は体験の世界へと、役割分担を建物のレベルで割り切りました。約560平方メートルの芝生広場「noNIWA」や道の駅と連携した地域マルシェも、売上ではなく「また来たくなる時間」への投資と位置づけられます。</p>
+<div class="vs">
+<div class="vs-col vs-a"><div class="vs-head">物販中心の商業施設</div><ul><li>品揃えと価格で近隣店やECと比較される</li><li>買い物のついでに立ち寄られる</li><li>値引きで集客する</li></ul></div>
+<div class="vs-col vs-b"><div class="vs-head">体験特化の施設</div><ul><li>その場でしか成立せず比較対象がない</li><li>わざわざ出かける目的になる</li><li>体験の値付けに主導権を持てる</li></ul></div>
+</div>
 <h2>値決めへの接続</h2>
 <p>この構造の要点は、価格比較の土俵から降りたことにあります。ナショナルブランドの物販は、ネット最安値と常に比較され、値決めの主導権を持てません。一方、IMAXの鑑賞料金、BBQの席料、工房の体験料は、そもそも比較対象が存在しにくく、売り手が価格決定権を持ちやすい領域です。体験を核にした「目的来館」は、テナントにとってもセールで客を呼ぶ消耗戦からの出口になります。値引きによるシェア拡大ではなく、比較不能な価値への値付けで回収する。生鮮を置かないという一見大胆な引き算は、この値決め構造を成立させるための必然だったと考えられます。</p>
 <h2>今日の問い</h2>

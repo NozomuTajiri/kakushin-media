@@ -68,6 +68,27 @@ article h3{font-size:1.05rem;margin:2rem 0 .75rem;color:var(--navy)}
 article p{margin-bottom:1.4rem;text-align:justify}
 article a{color:var(--gold-text);border-bottom:1px solid currentColor}
 article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
+/* 記事内ビジュアル */
+.viz{margin:2.2rem 0;padding:1.4rem 1.4rem 1.1rem;background:#fff;border:1px solid var(--line);border-radius:10px}
+.viz-title{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:.9rem}
+.viz-unit{font-weight:400;color:var(--muted);font-size:.8rem;margin-left:.4rem}
+.viz svg{width:100%;height:auto;display:block}
+.viz-source{font-size:.75rem;color:var(--muted);margin-top:.5rem;text-align:right}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin:2.2rem 0}
+.vs-col{border-radius:8px;overflow:hidden;border:1px solid var(--line);background:#fff}
+.vs-head{padding:.55rem 1rem;font-weight:700;font-size:.92rem;text-align:center}
+.vs-a .vs-head{background:#f1eee5;color:#5a5a55}
+.vs-b{border-color:var(--navy)}
+.vs-b .vs-head{background:var(--navy);color:var(--gold)}
+.vs ul{list-style:none;padding:.7rem 1rem;margin:0}
+.vs li{font-size:.86rem;line-height:1.8;padding:.35rem 0;border-bottom:1px dashed var(--line)}
+.vs li:last-child{border-bottom:none}
+.flow{display:flex;align-items:stretch;gap:.5rem;margin:2.2rem 0;flex-wrap:wrap}
+.flow-step{flex:1;min-width:130px;background:var(--cream);border:1px solid var(--line);border-radius:8px;padding:.8rem .9rem;text-align:center}
+.flow-name{font-weight:700;color:var(--navy);font-size:.95rem}
+.flow-desc{font-size:.78rem;color:var(--muted);line-height:1.7;margin-top:.25rem}
+.flow-arrow{align-self:center}
+@media(max-width:560px){.vs{grid-template-columns:1fr}.flow{flex-direction:column}.flow-arrow{transform:rotate(90deg);align-self:center}}
 .source{margin-top:3rem;padding:1.1rem 1.25rem;background:var(--cream);border-radius:6px;font-size:.82rem;color:#555;line-height:1.9}
 .source a{color:var(--gold-text);border-bottom:1px solid currentColor}
 .credit{margin-top:2.5rem;font-size:.82rem;color:var(--muted);line-height:1.9}
@@ -94,10 +115,24 @@ article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
 </div>
 <h2>何が起きたか</h2>
 <p>中国EV最大手BYDの2026年1〜3月期の純利益は前年比55%減の40.8億元となり、減益は4四半期連続となりました。車両の平均値引き率は2026年3月に過去最高の10%に達し、2025年通期の純利益も約2割減の326億元。中国EV市場でのシェアは約27%から約17%へ低下したと報じられています。</p>
+<figure class="viz">
+<figcaption class="viz-title">BYDの中国EV市場シェア<span class="viz-unit">(%)</span></figcaption>
+<svg viewBox="0 0 640 300" role="img" aria-label="BYDの中国EV市場シェア">
+<line x1="20" y1="254" x2="620" y2="254" stroke="#e7e0d0" stroke-width="1.5"/>
+<rect x="74.0" y="40.0" width="192.0" height="214.0" rx="3" fill="#cca433"/>
+<text x="170.0" y="31.0" text-anchor="middle" font-size="15" font-weight="700" fill="#212947">27</text>
+<text x="170.0" y="280" text-anchor="middle" font-size="14" fill="#5c5e6d">従来</text><rect x="374.0" y="119.3" width="192.0" height="134.7" rx="3" fill="#cca433"/>
+<text x="470.0" y="110.3" text-anchor="middle" font-size="15" font-weight="700" fill="#212947">17</text>
+<text x="470.0" y="280" text-anchor="middle" font-size="14" fill="#5c5e6d">足元</text>
+</svg>
+<div class="viz-source">出典: Automotive World</div>
+</figure>
 <h2>顧客は誰で、何に困っているか</h2>
 <p>まず確認したいのは、BYDが技術力でも生産規模でも世界トップクラスの企業だということです。問題は製品ではなく市場の構造にあります。中国市場では小米(シャオミ)や吉利(ジーリー)など競合が相次いで参入し、顧客から見て「どれを選んでも十分によい車」が並ぶ状態、つまりコモディティ化が進みました。顧客の困りごとが「よいEVが欲しい」から「どうせ同じならより安く」へ移った瞬間、選択基準は価格だけになります。この構造下では、業界ルールとして赤字販売を禁じる規制が2026年2月に導入されても値引きは止まらず、中国汽車流通協会の試算では2023〜2025年の価格競争で業界全体の収入が最大4,710億元(約690億ドル)失われたとされています。</p>
 <h2>付加価値の構造──差別化なき市場では、値引きだけが「機能」する</h2>
-<p>付加価値とは、顧客の困りごとを解決した分だけ生まれる利益の源泉です。ところが各社の製品性能が拮抗すると、顧客が知覚できる差は価格だけになり、「値引き」が唯一有効な販売手段になります。ここに価格競争の恐ろしさがあります。1社の値引きは競合の値引きで即座に相殺され、顧客への提供価値は増えないまま、業界全体の利益だけが削られていく。しかも値引きは在庫を動かすため一時的に「効いた」ように見えます。BYDがドイツで最大11,500ユーロの値引きに踏み込んだ背景にも在庫の積み上がりが指摘されており、値引き→シェア防衛→さらなる値引きという循環から単独では降りられなくなる構造が読み取れます。現地の販売店からは中古車の残存価値の下落を懸念する声も上がっており、値引きの副作用は新車の利益にとどまらず、ブランドの資産価値にまで及び始めていると考えられます。これは経営の巧拙ではなく、差別化の消失が必然的に生む構造の問題です。</p>
+<p>付加価値とは、顧客の困りごとを解決した分だけ生まれる利益の源泉です。ところが各社の製品性能が拮抗すると、顧客が知覚できる差は価格だけになり、「値引き」が唯一有効な販売手段になります。ここに価格競争の恐ろしさがあります。1社の値引きは競合の値引きで即座に相殺され、顧客への提供価値は増えないまま、業界全体の利益だけが削られていく。しかも値引きは在庫を動かすため一時的に「効いた」ように見えます。BYDがドイツで最大11,500ユーロの値引きに踏み込んだ背景にも在庫の積み上がりが指摘されており、値引き→シェア防衛→さらなる値引きという循環から単独では降りられなくなる構造が読み取れます。</p>
+<div class="flow"><div class="flow-step"><div class="flow-name">値引き</div><div class="flow-desc">在庫が動き一時的に効いたように見える</div></div><div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 40 40" width="26" height="26"><path d="M8 20h20m-8-8 8 8-8 8" fill="none" stroke="#cca433" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="flow-step"><div class="flow-name">シェア防衛</div><div class="flow-desc">競合の値引きで即座に相殺される</div></div><div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 40 40" width="26" height="26"><path d="M8 20h20m-8-8 8 8-8 8" fill="none" stroke="#cca433" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="flow-step"><div class="flow-name">さらなる値引き</div><div class="flow-desc">業界全体の利益だけが削られていく</div></div></div>
+<p>現地の販売店からは中古車の残存価値の下落を懸念する声も上がっており、値引きの副作用は新車の利益にとどまらず、ブランドの資産価値にまで及び始めていると考えられます。これは経営の巧拙ではなく、差別化の消失が必然的に生む構造の問題です。</p>
 <h2>値決めへの接続</h2>
 <p>学ぶべきは「値決めを競争に委ねた企業は、価値を顧客に語る権利を失う」ということです。価格がライバルの動きで決まる状態とは、自社の提供価値と価格の接続が切れた状態です。逆に言えば、価格競争から抜けるには値下げの停止ではなく、「この顧客のこの困りごとには自社しか応えられない」という土俵の再設定が先に必要です。規制でも止まらなかった値引き合戦が示す通り、構造を変えない限り値決めの主導権は戻らないと考えられます。</p>
 <h2>今日の問い</h2>

@@ -68,6 +68,27 @@ article h3{font-size:1.05rem;margin:2rem 0 .75rem;color:var(--navy)}
 article p{margin-bottom:1.4rem;text-align:justify}
 article a{color:var(--gold-text);border-bottom:1px solid currentColor}
 article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
+/* 記事内ビジュアル */
+.viz{margin:2.2rem 0;padding:1.4rem 1.4rem 1.1rem;background:#fff;border:1px solid var(--line);border-radius:10px}
+.viz-title{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:.9rem}
+.viz-unit{font-weight:400;color:var(--muted);font-size:.8rem;margin-left:.4rem}
+.viz svg{width:100%;height:auto;display:block}
+.viz-source{font-size:.75rem;color:var(--muted);margin-top:.5rem;text-align:right}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin:2.2rem 0}
+.vs-col{border-radius:8px;overflow:hidden;border:1px solid var(--line);background:#fff}
+.vs-head{padding:.55rem 1rem;font-weight:700;font-size:.92rem;text-align:center}
+.vs-a .vs-head{background:#f1eee5;color:#5a5a55}
+.vs-b{border-color:var(--navy)}
+.vs-b .vs-head{background:var(--navy);color:var(--gold)}
+.vs ul{list-style:none;padding:.7rem 1rem;margin:0}
+.vs li{font-size:.86rem;line-height:1.8;padding:.35rem 0;border-bottom:1px dashed var(--line)}
+.vs li:last-child{border-bottom:none}
+.flow{display:flex;align-items:stretch;gap:.5rem;margin:2.2rem 0;flex-wrap:wrap}
+.flow-step{flex:1;min-width:130px;background:var(--cream);border:1px solid var(--line);border-radius:8px;padding:.8rem .9rem;text-align:center}
+.flow-name{font-weight:700;color:var(--navy);font-size:.95rem}
+.flow-desc{font-size:.78rem;color:var(--muted);line-height:1.7;margin-top:.25rem}
+.flow-arrow{align-self:center}
+@media(max-width:560px){.vs{grid-template-columns:1fr}.flow{flex-direction:column}.flow-arrow{transform:rotate(90deg);align-self:center}}
 .source{margin-top:3rem;padding:1.1rem 1.25rem;background:var(--cream);border-radius:6px;font-size:.82rem;color:#555;line-height:1.9}
 .source a{color:var(--gold-text);border-bottom:1px solid currentColor}
 .credit{margin-top:2.5rem;font-size:.82rem;color:var(--muted);line-height:1.9}
@@ -94,10 +115,30 @@ article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
 </div>
 <h2>何が起きたか</h2>
 <p>帝国データバンクの調査によると、2026年7月、食品主要195社による値上げは2,566品目にのぼり、1回あたりの平均値上げ率は11%となりました。中東情勢の悪化による原油・ナフサ価格の上昇が、原材料だけでなくトレーやフィルムなどの資材コストまで押し上げたことが主因です。6月・7月の合計では3,347品目。値上げはもはや例外ではなく、経営の前提条件になりました。</p>
+<figure class="viz">
+<figcaption class="viz-title">食品主要195社の値上げ品目数(2026年)<span class="viz-unit">(品目)</span></figcaption>
+<svg viewBox="0 0 640 300" role="img" aria-label="食品主要195社の値上げ品目数(2026年)">
+<line x1="20" y1="254" x2="620" y2="254" stroke="#e7e0d0" stroke-width="1.5"/>
+<rect x="56.0" y="40.0" width="128.0" height="214.0" rx="3" fill="#cca433"/>
+<text x="120.0" y="31.0" text-anchor="middle" font-size="15" font-weight="700" fill="#212947">2,838</text>
+<text x="120.0" y="280" text-anchor="middle" font-size="14" fill="#5c5e6d">4月</text><rect x="256.0" y="195.1" width="128.0" height="58.9" rx="3" fill="#cca433"/>
+<text x="320.0" y="186.1" text-anchor="middle" font-size="15" font-weight="700" fill="#212947">781</text>
+<text x="320.0" y="280" text-anchor="middle" font-size="14" fill="#5c5e6d">6月</text><rect x="456.0" y="60.5" width="128.0" height="193.5" rx="3" fill="#cca433"/>
+<text x="520.0" y="51.5" text-anchor="middle" font-size="15" font-weight="700" fill="#212947">2,566</text>
+<text x="520.0" y="280" text-anchor="middle" font-size="14" fill="#5c5e6d">7月</text>
+</svg>
+<div class="viz-source">出典: 帝国データバンク「食品主要195社」価格改定動向調査</div>
+</figure>
 <h2>顧客は誰で、何に困っているか</h2>
 <p>値上げする食品メーカーにとって、顧客は小売のバイヤーであり、その先にいる消費者です。消費者はすでに「値上げ疲れ」の状態にあり、価格だけを理由に棚の中で商品を乗り換えるハードルは下がり続けています。つまりいま顧客が困っているのは「高くなること」そのものではなく、「高くなった理由に納得できないまま、その商品を選び続ける理由を失うこと」です。</p>
 <h2>付加価値の構造──コスト転嫁と価値転嫁</h2>
-<p>同じ11%の値上げでも、中身は二つに分かれます。一つは「原価が上がったので上げます」というコスト転嫁。もう一つは「あなたの困りごとをここまで解決しているから、この価格です」という価値転嫁です。コスト転嫁は自社の事情の説明であり、顧客の価値には何も足していません。一方、価値転嫁ができる企業は、値上げの局面を「自社が顧客のどんな困りごとに値段をつけているのか」を語り直す機会に変えています。機能(何ができるか)を便益(顧客に何が起きるか)へ、便益を価値(顧客がお金を払う理由)へ変換して初めて、価格は根拠を持ちます。</p>
+<p>同じ11%の値上げでも、中身は二つに分かれます。一つは「原価が上がったので上げます」というコスト転嫁。もう一つは「あなたの困りごとをここまで解決しているから、この価格です」という価値転嫁です。</p>
+<div class="vs">
+<div class="vs-col vs-a"><div class="vs-head">コスト転嫁</div><ul><li>「原価が上がったので上げます」</li><li>自社の事情の説明</li><li>コストが下がると値下げ圧力に飲まれる</li></ul></div>
+<div class="vs-col vs-b"><div class="vs-head">価値転嫁</div><ul><li>「困りごとをここまで解決しているから、この価格です」</li><li>顧客がお金を払う理由の提示</li><li>原価が落ち着いても価格を維持できる</li></ul></div>
+</div>
+<p>コスト転嫁は自社の事情の説明であり、顧客の価値には何も足していません。一方、価値転嫁ができる企業は、値上げの局面を「自社が顧客のどんな困りごとに値段をつけているのか」を語り直す機会に変えています。機能(何ができるか)を便益(顧客に何が起きるか)へ、便益を価値(顧客がお金を払う理由)へ変換して初めて、価格は根拠を持ちます。</p>
+<div class="flow"><div class="flow-step"><div class="flow-name">機能</div><div class="flow-desc">何ができるか</div></div><div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 40 40" width="26" height="26"><path d="M8 20h20m-8-8 8 8-8 8" fill="none" stroke="#cca433" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="flow-step"><div class="flow-name">便益</div><div class="flow-desc">顧客に何が起きるか</div></div><div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 40 40" width="26" height="26"><path d="M8 20h20m-8-8 8 8-8 8" fill="none" stroke="#cca433" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="flow-step"><div class="flow-name">価値</div><div class="flow-desc">顧客がお金を払う理由</div></div></div>
 <h2>値決めへの接続</h2>
 <p>値決めは経営そのものです。コストの積み上げで価格を決める企業は、コストが下がった瞬間に値下げ圧力に飲み込まれます。顧客価値を基準に価格を決める企業だけが、原価が落ち着いた後も価格を維持できます。今回の値上げラッシュで問われているのは、実は「いくら上げるか」ではなく「何を根拠に上げるか」。その根拠を持つ企業と持たない企業の差は、コストが落ち着いた1年後の利益率に現れると考えられます。</p>
 <h2>今日の問い</h2>

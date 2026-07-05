@@ -68,6 +68,27 @@ article h3{font-size:1.05rem;margin:2rem 0 .75rem;color:var(--navy)}
 article p{margin-bottom:1.4rem;text-align:justify}
 article a{color:var(--gold-text);border-bottom:1px solid currentColor}
 article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
+/* 記事内ビジュアル */
+.viz{margin:2.2rem 0;padding:1.4rem 1.4rem 1.1rem;background:#fff;border:1px solid var(--line);border-radius:10px}
+.viz-title{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:.9rem}
+.viz-unit{font-weight:400;color:var(--muted);font-size:.8rem;margin-left:.4rem}
+.viz svg{width:100%;height:auto;display:block}
+.viz-source{font-size:.75rem;color:var(--muted);margin-top:.5rem;text-align:right}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin:2.2rem 0}
+.vs-col{border-radius:8px;overflow:hidden;border:1px solid var(--line);background:#fff}
+.vs-head{padding:.55rem 1rem;font-weight:700;font-size:.92rem;text-align:center}
+.vs-a .vs-head{background:#f1eee5;color:#5a5a55}
+.vs-b{border-color:var(--navy)}
+.vs-b .vs-head{background:var(--navy);color:var(--gold)}
+.vs ul{list-style:none;padding:.7rem 1rem;margin:0}
+.vs li{font-size:.86rem;line-height:1.8;padding:.35rem 0;border-bottom:1px dashed var(--line)}
+.vs li:last-child{border-bottom:none}
+.flow{display:flex;align-items:stretch;gap:.5rem;margin:2.2rem 0;flex-wrap:wrap}
+.flow-step{flex:1;min-width:130px;background:var(--cream);border:1px solid var(--line);border-radius:8px;padding:.8rem .9rem;text-align:center}
+.flow-name{font-weight:700;color:var(--navy);font-size:.95rem}
+.flow-desc{font-size:.78rem;color:var(--muted);line-height:1.7;margin-top:.25rem}
+.flow-arrow{align-self:center}
+@media(max-width:560px){.vs{grid-template-columns:1fr}.flow{flex-direction:column}.flow-arrow{transform:rotate(90deg);align-self:center}}
 .source{margin-top:3rem;padding:1.1rem 1.25rem;background:var(--cream);border-radius:6px;font-size:.82rem;color:#555;line-height:1.9}
 .source a{color:var(--gold-text);border-bottom:1px solid currentColor}
 .credit{margin-top:2.5rem;font-size:.82rem;color:var(--muted);line-height:1.9}
@@ -94,10 +115,29 @@ article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
 </div>
 <h2>何が起きたか</h2>
 <p>しまむらが6月26日に発表した2026年3〜5月期連結決算は、売上高1,816億円(前年同期比8%増)、営業利益178億円(同17%増)、純利益128億円(同19%増)で、この期間として3年連続の最高益となりました。吸水速乾の機能性PB「ファイバードライ」シリーズが14%超の増収、キャラクターコラボ商品も22%増と伸び、既存店売上高は7%増。2026年2月期通期も売上高7,000億円と過去最高を更新しています。</p>
+<figure class="viz">
+<figcaption class="viz-title">しまむら 2026年3〜5月期の前年同期比伸び率<span class="viz-unit">(%)</span></figcaption>
+<svg viewBox="0 0 640 300" role="img" aria-label="しまむら 2026年3〜5月期の前年同期比伸び率">
+<line x1="20" y1="254" x2="620" y2="254" stroke="#e7e0d0" stroke-width="1.5"/>
+<rect x="56.0" y="163.9" width="128.0" height="90.1" rx="3" fill="#cca433"/>
+<text x="120.0" y="154.9" text-anchor="middle" font-size="15" font-weight="700" fill="#212947">8</text>
+<text x="120.0" y="280" text-anchor="middle" font-size="14" fill="#5c5e6d">売上高</text><rect x="256.0" y="62.5" width="128.0" height="191.5" rx="3" fill="#cca433"/>
+<text x="320.0" y="53.5" text-anchor="middle" font-size="15" font-weight="700" fill="#212947">17</text>
+<text x="320.0" y="280" text-anchor="middle" font-size="14" fill="#5c5e6d">営業利益</text><rect x="456.0" y="40.0" width="128.0" height="214.0" rx="3" fill="#cca433"/>
+<text x="520.0" y="31.0" text-anchor="middle" font-size="15" font-weight="700" fill="#212947">19</text>
+<text x="520.0" y="280" text-anchor="middle" font-size="14" fill="#5c5e6d">純利益</text>
+</svg>
+<div class="viz-source">出典: 日本経済新聞</div>
+</figure>
 <h2>顧客は誰で、何に困っているか</h2>
 <p>しまむらの顧客は、家計を預かる生活者です。衣料品も値上がりが続くなかで、顧客が困っているのは単に「服が高いこと」ではありません。「安い服はすぐ着られなくなる、でも高い服を何枚も買う余裕はない」という板挟みです。汗をかく季節に快適に過ごしたい、子どもの好きなキャラクターの服を買ってあげたい──こうした具体的な欲求に、納得できる価格で応えてくれる売り場を探しています。つまり潜在ニーズは「安さ」ではなく「この値段でここまでの品質と楽しさが手に入るのか、という驚き」だと考えられます。</p>
 <h2>付加価値の構造──「安いから買う」を「これが欲しい」に変える</h2>
-<p>しまむらの増益を牽引したのは、仕入れ品の値下げではなくPB(プライベートブランド)です。「ファイバードライ」は吸水速乾という機能を明確に打ち出し、「夏を快適に過ごせる」という便益に変換しました。PB「クロッシー」には高価格帯ライン「クロッシープレミアム」を設け、低価格チェーンでありながら一段上の品質を求める顧客の受け皿を用意しています。キャラクターコラボは、機能では説明できない「子どもが喜ぶ」「集めたくなる」という情緒的価値そのものです。注目すべきは、これらがすべて「しまむらでしか買えない商品」であること。ナショナルブランドの仕入れ販売は価格比較にさらされますが、独自PBとコラボ商品は比較対象がなく、価値がそのまま選ばれる理由になります。この流れは今期に始まったものではありません。2026年2月期通期でも発熱素材の「ファイバーヒート」が前年比28.6%増、高価格帯の「クロッシープレミアム」が6.5%増と伸びており、機能性と上位ラインへのシフトは複数年かけて積み上げられた戦略だと分かります。</p>
+<p>しまむらの増益を牽引したのは、仕入れ品の値下げではなくPB(プライベートブランド)です。「ファイバードライ」は吸水速乾という機能を明確に打ち出し、「夏を快適に過ごせる」という便益に変換しました。PB「クロッシー」には高価格帯ライン「クロッシープレミアム」を設け、低価格チェーンでありながら一段上の品質を求める顧客の受け皿を用意しています。キャラクターコラボは、機能では説明できない「子どもが喜ぶ」「集めたくなる」という情緒的価値そのものです。注目すべきは、これらがすべて「しまむらでしか買えない商品」であること。ナショナルブランドの仕入れ販売は価格比較にさらされますが、独自PBとコラボ商品は比較対象がなく、価値がそのまま選ばれる理由になります。</p>
+<div class="vs">
+<div class="vs-col vs-a"><div class="vs-head">仕入れ商品の販売</div><ul><li>他店でも買えるため価格で比較される</li><li>安さが選ばれる理由になる</li><li>値下げで客数を守る</li></ul></div>
+<div class="vs-col vs-b"><div class="vs-head">独自PBとコラボ商品</div><ul><li>しまむらでしか買えない</li><li>機能と楽しさで指名買いされる</li><li>顧客が自ら一段高い商品を選ぶ</li></ul></div>
+</div>
+<p>この流れは今期に始まったものではありません。2026年2月期通期でも発熱素材の「ファイバーヒート」が前年比28.6%増、高価格帯の「クロッシープレミアム」が6.5%増と伸びており、機能性と上位ラインへのシフトは複数年かけて積み上げられた戦略だと分かります。</p>
 <h2>値決めへの接続</h2>
 <p>しまむらの回収構造は「値上げ」ではなく「商品ミックスの高付加価値化」です。看板である低価格イメージは守りながら、機能性PBや高価格帯ライン、コラボ商品といった単価と粗利の高い商品の構成比を高める。顧客は値上げされたと感じることなく、自ら進んで一段高い商品を選びます。売上8%増に対して営業利益が17%増と、利益が売上を上回る伸びを示しているのは、この価値の乗った商品へのシフトが利益率を押し上げているためと考えられます。価格を上げずに客単価と利益率を上げる。これは低価格業態における最も洗練された値決めの形です。</p>
 <h2>今日の問い</h2>

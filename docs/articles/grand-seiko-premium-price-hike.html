@@ -68,6 +68,27 @@ article h3{font-size:1.05rem;margin:2rem 0 .75rem;color:var(--navy)}
 article p{margin-bottom:1.4rem;text-align:justify}
 article a{color:var(--gold-text);border-bottom:1px solid currentColor}
 article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
+/* 記事内ビジュアル */
+.viz{margin:2.2rem 0;padding:1.4rem 1.4rem 1.1rem;background:#fff;border:1px solid var(--line);border-radius:10px}
+.viz-title{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:.9rem}
+.viz-unit{font-weight:400;color:var(--muted);font-size:.8rem;margin-left:.4rem}
+.viz svg{width:100%;height:auto;display:block}
+.viz-source{font-size:.75rem;color:var(--muted);margin-top:.5rem;text-align:right}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin:2.2rem 0}
+.vs-col{border-radius:8px;overflow:hidden;border:1px solid var(--line);background:#fff}
+.vs-head{padding:.55rem 1rem;font-weight:700;font-size:.92rem;text-align:center}
+.vs-a .vs-head{background:#f1eee5;color:#5a5a55}
+.vs-b{border-color:var(--navy)}
+.vs-b .vs-head{background:var(--navy);color:var(--gold)}
+.vs ul{list-style:none;padding:.7rem 1rem;margin:0}
+.vs li{font-size:.86rem;line-height:1.8;padding:.35rem 0;border-bottom:1px dashed var(--line)}
+.vs li:last-child{border-bottom:none}
+.flow{display:flex;align-items:stretch;gap:.5rem;margin:2.2rem 0;flex-wrap:wrap}
+.flow-step{flex:1;min-width:130px;background:var(--cream);border:1px solid var(--line);border-radius:8px;padding:.8rem .9rem;text-align:center}
+.flow-name{font-weight:700;color:var(--navy);font-size:.95rem}
+.flow-desc{font-size:.78rem;color:var(--muted);line-height:1.7;margin-top:.25rem}
+.flow-arrow{align-self:center}
+@media(max-width:560px){.vs{grid-template-columns:1fr}.flow{flex-direction:column}.flow-arrow{transform:rotate(90deg);align-self:center}}
 .source{margin-top:3rem;padding:1.1rem 1.25rem;background:var(--cream);border-radius:6px;font-size:.82rem;color:#555;line-height:1.9}
 .source a{color:var(--gold-text);border-bottom:1px solid currentColor}
 .credit{margin-top:2.5rem;font-size:.82rem;color:var(--muted);line-height:1.9}
@@ -94,11 +115,24 @@ article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
 </div>
 <h2>何が起きたか</h2>
 <p>グランドセイコーは2026年6月9日、ヘリテージコレクションの18Kゴールドモデル3品番を7月6日から値上げすると発表しました。最上位のSLGA027は880万円から1265万円へ、実に385万円・約44%の引き上げです。日本経済新聞は、株高による富裕層の旺盛な消費を背景に、高級ブランドが強気の値上げに動いていると報じています。</p>
+<figure class="viz">
+<figcaption class="viz-title">グランドセイコー SLGA027の希望小売価格<span class="viz-unit">(万円)</span></figcaption>
+<svg viewBox="0 0 640 300" role="img" aria-label="グランドセイコー SLGA027の希望小売価格">
+<line x1="20" y1="254" x2="620" y2="254" stroke="#e7e0d0" stroke-width="1.5"/>
+<rect x="74.0" y="105.1" width="192.0" height="148.9" rx="3" fill="#cca433"/>
+<text x="170.0" y="96.1" text-anchor="middle" font-size="15" font-weight="700" fill="#212947">880</text>
+<text x="170.0" y="280" text-anchor="middle" font-size="14" fill="#5c5e6d">改定前</text><rect x="374.0" y="40.0" width="192.0" height="214.0" rx="3" fill="#cca433"/>
+<text x="470.0" y="31.0" text-anchor="middle" font-size="15" font-weight="700" fill="#212947">1,265</text>
+<text x="470.0" y="280" text-anchor="middle" font-size="14" fill="#5c5e6d">改定後</text>
+</svg>
+<div class="viz-source">出典: 日本経済新聞</div>
+</figure>
 <h2>顧客は誰で、何に困っているか</h2>
 <p>このモデルの顧客は、国内外の富裕層と時計愛好家です。彼らが困っているのは「時刻がわからないこと」ではありません。数百万円を投じるに足る、確かな物語と希少性を備えた一本が見つからないことです。スイス勢の高級時計は選択肢として確立していますが、「日本のものづくりの頂点を、世界に通用する格で持ちたい」という潜在ニーズには、長らく応える製品が限られていました。大谷翔平選手とのグローバルパートナーシップで海外での認知が急上昇していると報じられており、この潜在ニーズは世界規模に広がりつつあると考えられます。</p>
 <h2>付加価値の構造──機能は同じでも「座標」が変わった</h2>
 <p>注目すべきは、値上げの対象が製品としては何も変わっていない点です。スプリングドライブ・キャリバー9RA2も、44GSケースの造形も従来のまま。変わったのは顧客の頭の中にある「比較対象」です。</p>
 <p>機能で言えば、独自機構による高精度と18Kの素材価値。便益で言えば、長く使える正確さと仕上げの美しさ。しかし1000万円超の値決めを支えるのは、その先にある価値──「世界のラグジュアリーウオッチと同じ土俵で語られる日本製を所有する誇り」です。金価格の上昇という原価要因はあるにせよ、4割超の改定幅は、海外ラグジュアリーとの価格バランスを意識した再ポジショニングと考えられます。同じ機能でも、比較される相手が変われば、顧客が感じる価値の天井は動く。ここが本件の核心です。</p>
+<div class="flow"><div class="flow-step"><div class="flow-name">機能</div><div class="flow-desc">独自機構による高精度と18Kの素材価値</div></div><div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 40 40" width="26" height="26"><path d="M8 20h20m-8-8 8 8-8 8" fill="none" stroke="#cca433" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="flow-step"><div class="flow-name">便益</div><div class="flow-desc">長く使える正確さと仕上げの美しさ</div></div><div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 40 40" width="26" height="26"><path d="M8 20h20m-8-8 8 8-8 8" fill="none" stroke="#cca433" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="flow-step"><div class="flow-name">価値</div><div class="flow-desc">世界のラグジュアリーと並ぶ日本製を所有する誇り</div></div></div>
 <h2>値決めへの接続</h2>
 <p>この値上げは、コスト転嫁でもシェア拡大でもなく、「価格そのものをブランド価値の一部にする」タイプの値決めです。ラグジュアリーの世界では、価格は品質のシグナルであり、安さはむしろ価値を毀損します。株高で富裕層の資産効果が働く今というタイミングを捉え、需要が強いうちに座標を引き上げる。値上げによって顧客が減るのではなく、値上げによって「持つ意味」が強くなる構造です。</p>
 <p>もちろん、これは高級時計だから成立する話ではありません。日本企業の多くは、原価が上がった分だけを恐る恐る転嫁する「守りの値上げ」にとどまっています。しかし顧客が本当に比較しているのは原価ではなく、代替品と物語です。自社の商品が顧客の頭の中でどの棚に置かれているかを定義し直すことは、業種を問わず可能な「攻めの値決め」だと考えられます。</p>

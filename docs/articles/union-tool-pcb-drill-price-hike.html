@@ -68,6 +68,27 @@ article h3{font-size:1.05rem;margin:2rem 0 .75rem;color:var(--navy)}
 article p{margin-bottom:1.4rem;text-align:justify}
 article a{color:var(--gold-text);border-bottom:1px solid currentColor}
 article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
+/* 記事内ビジュアル */
+.viz{margin:2.2rem 0;padding:1.4rem 1.4rem 1.1rem;background:#fff;border:1px solid var(--line);border-radius:10px}
+.viz-title{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:.9rem}
+.viz-unit{font-weight:400;color:var(--muted);font-size:.8rem;margin-left:.4rem}
+.viz svg{width:100%;height:auto;display:block}
+.viz-source{font-size:.75rem;color:var(--muted);margin-top:.5rem;text-align:right}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin:2.2rem 0}
+.vs-col{border-radius:8px;overflow:hidden;border:1px solid var(--line);background:#fff}
+.vs-head{padding:.55rem 1rem;font-weight:700;font-size:.92rem;text-align:center}
+.vs-a .vs-head{background:#f1eee5;color:#5a5a55}
+.vs-b{border-color:var(--navy)}
+.vs-b .vs-head{background:var(--navy);color:var(--gold)}
+.vs ul{list-style:none;padding:.7rem 1rem;margin:0}
+.vs li{font-size:.86rem;line-height:1.8;padding:.35rem 0;border-bottom:1px dashed var(--line)}
+.vs li:last-child{border-bottom:none}
+.flow{display:flex;align-items:stretch;gap:.5rem;margin:2.2rem 0;flex-wrap:wrap}
+.flow-step{flex:1;min-width:130px;background:var(--cream);border:1px solid var(--line);border-radius:8px;padding:.8rem .9rem;text-align:center}
+.flow-name{font-weight:700;color:var(--navy);font-size:.95rem}
+.flow-desc{font-size:.78rem;color:var(--muted);line-height:1.7;margin-top:.25rem}
+.flow-arrow{align-self:center}
+@media(max-width:560px){.vs{grid-template-columns:1fr}.flow{flex-direction:column}.flow-arrow{transform:rotate(90deg);align-self:center}}
 .source{margin-top:3rem;padding:1.1rem 1.25rem;background:var(--cream);border-radius:6px;font-size:.82rem;color:#555;line-height:1.9}
 .source a{color:var(--gold-text);border-bottom:1px solid currentColor}
 .credit{margin-top:2.5rem;font-size:.82rem;color:var(--muted);line-height:1.9}
@@ -94,10 +115,24 @@ article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
 </div>
 <h2>何が起きたか</h2>
 <p>プリント基板(PCB)用ドリルなど精密切削工具を手がけるユニオンツールが、2026年1月出荷分でPCBドリル・ルーター・逆段ドリルを現行価格から15〜20%以上値上げしたのに続き、2026年7月出荷分からPCB工具全般の価格改定を実施します。理由は原材料高騰により「現状の価格での継続販売が困難」になったこと。一方で同社の2025年12月期は売上高401億円(前期比23.2%増)、営業利益87億円(同26.9%増)と過去最高を更新し、2026年12月期も売上高450億円、営業利益100億円と増収増益を見込んでいます。</p>
+<figure class="viz">
+<figcaption class="viz-title">ユニオンツールの営業利益<span class="viz-unit">(億円)</span></figcaption>
+<svg viewBox="0 0 640 300" role="img" aria-label="ユニオンツールの営業利益">
+<line x1="20" y1="254" x2="620" y2="254" stroke="#e7e0d0" stroke-width="1.5"/>
+<rect x="74.0" y="67.8" width="192.0" height="186.2" rx="3" fill="#cca433"/>
+<text x="170.0" y="58.8" text-anchor="middle" font-size="15" font-weight="700" fill="#212947">87</text>
+<text x="170.0" y="280" text-anchor="middle" font-size="14" fill="#5c5e6d">2025年12月期</text><rect x="374.0" y="40.0" width="192.0" height="214.0" rx="3" fill="#cca433"/>
+<text x="470.0" y="31.0" text-anchor="middle" font-size="15" font-weight="700" fill="#212947">100</text>
+<text x="470.0" y="280" text-anchor="middle" font-size="14" fill="#5c5e6d">2026年12月期予想</text>
+</svg>
+<div class="viz-source">出典: ユニオンツール決算発表</div>
+</figure>
 <h2>顧客は誰で、何に困っているか</h2>
 <p>同社の顧客は、AIサーバーやスマートフォンに使われるプリント基板を製造するメーカーです。生成AIの需要拡大で基板は高多層化・微細化が進み、直径0.1ミリを下回るような微細な穴を、大量に、正確に開け続けることが求められています。ここで穴あけ工具の品質が揺らぐと、高価な基板そのものが不良品になります。つまり顧客の本当の困りごとは「工具が高くなること」ではなく、「工具の品質が原因で歩留まりが落ち、納期と信頼を失うこと」だと考えられます。工具代は基板の価値全体から見ればごく小さく、失敗したときの損失のほうがはるかに大きいのです。</p>
 <h2>付加価値の構造──「工具の価格」ではなく「不良の回避」を売る</h2>
-<p>日本経済新聞(2026年5月23日)では、ユニオンツールは「価格転嫁しても好業績を維持できる」企業の代表例として、高い技術力を持ち他社では代替できない製品を提供する会社と紹介されました。機能として売っているのは超硬ドリルですが、顧客が買っている便益は「微細加工でも安定して穴が開くこと」、その先にある価値は「歩留まりの維持=不良コストと機会損失の回避」です。この変換ができているからこそ、2割の値上げは顧客にとって「コスト増」ではなく「保険料の改定」程度の意味しか持ちません。さらに同社は長岡工場の生産能力を大幅に引き上げる大型投資を行うと報じられており、供給責任を果たす姿勢そのものが顧客の安心という価値になっています。</p>
+<p>日本経済新聞(2026年5月23日)では、ユニオンツールは「価格転嫁しても好業績を維持できる」企業の代表例として、高い技術力を持ち他社では代替できない製品を提供する会社と紹介されました。機能として売っているのは超硬ドリルですが、顧客が買っている便益は「微細加工でも安定して穴が開くこと」、その先にある価値は「歩留まりの維持=不良コストと機会損失の回避」です。</p>
+<div class="flow"><div class="flow-step"><div class="flow-name">機能</div><div class="flow-desc">超硬ドリルによる微細な穴あけ</div></div><div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 40 40" width="26" height="26"><path d="M8 20h20m-8-8 8 8-8 8" fill="none" stroke="#cca433" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="flow-step"><div class="flow-name">便益</div><div class="flow-desc">微細加工でも安定して穴が開く</div></div><div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 40 40" width="26" height="26"><path d="M8 20h20m-8-8 8 8-8 8" fill="none" stroke="#cca433" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="flow-step"><div class="flow-name">価値</div><div class="flow-desc">歩留まりの維持と不良コストの回避</div></div></div>
+<p>この変換ができているからこそ、2割の値上げは顧客にとって「コスト増」ではなく「保険料の改定」程度の意味しか持ちません。さらに同社は長岡工場の生産能力を大幅に引き上げる大型投資を行うと報じられており、供給責任を果たす姿勢そのものが顧客の安心という価値になっています。</p>
 <h2>値決めへの接続</h2>
 <p>注目すべきは、値上げの回収構造です。同社は値上げとシェア維持・拡大を両立させています。代替の利かない品質を握っているため、価格改定が受注減に直結しない。値上げ分は利益率の改善として回収され、その利益が増産投資に回り、供給力という次の価値を生む。値上げ→利益→投資→価値向上→さらに値上げが通る、という好循環です。逆に言えば、値上げの原資は「原材料高」という事情説明ではなく、顧客の歩留まりを守り続けてきた実績にあります。コスト上昇は値上げのきっかけにすぎず、値上げが通る理由は価値の側にあるのです。</p>
 <h2>今日の問い</h2>

@@ -68,6 +68,27 @@ article h3{font-size:1.05rem;margin:2rem 0 .75rem;color:var(--navy)}
 article p{margin-bottom:1.4rem;text-align:justify}
 article a{color:var(--gold-text);border-bottom:1px solid currentColor}
 article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
+/* 記事内ビジュアル */
+.viz{margin:2.2rem 0;padding:1.4rem 1.4rem 1.1rem;background:#fff;border:1px solid var(--line);border-radius:10px}
+.viz-title{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:.9rem}
+.viz-unit{font-weight:400;color:var(--muted);font-size:.8rem;margin-left:.4rem}
+.viz svg{width:100%;height:auto;display:block}
+.viz-source{font-size:.75rem;color:var(--muted);margin-top:.5rem;text-align:right}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin:2.2rem 0}
+.vs-col{border-radius:8px;overflow:hidden;border:1px solid var(--line);background:#fff}
+.vs-head{padding:.55rem 1rem;font-weight:700;font-size:.92rem;text-align:center}
+.vs-a .vs-head{background:#f1eee5;color:#5a5a55}
+.vs-b{border-color:var(--navy)}
+.vs-b .vs-head{background:var(--navy);color:var(--gold)}
+.vs ul{list-style:none;padding:.7rem 1rem;margin:0}
+.vs li{font-size:.86rem;line-height:1.8;padding:.35rem 0;border-bottom:1px dashed var(--line)}
+.vs li:last-child{border-bottom:none}
+.flow{display:flex;align-items:stretch;gap:.5rem;margin:2.2rem 0;flex-wrap:wrap}
+.flow-step{flex:1;min-width:130px;background:var(--cream);border:1px solid var(--line);border-radius:8px;padding:.8rem .9rem;text-align:center}
+.flow-name{font-weight:700;color:var(--navy);font-size:.95rem}
+.flow-desc{font-size:.78rem;color:var(--muted);line-height:1.7;margin-top:.25rem}
+.flow-arrow{align-self:center}
+@media(max-width:560px){.vs{grid-template-columns:1fr}.flow{flex-direction:column}.flow-arrow{transform:rotate(90deg);align-self:center}}
 .source{margin-top:3rem;padding:1.1rem 1.25rem;background:var(--cream);border-radius:6px;font-size:.82rem;color:#555;line-height:1.9}
 .source a{color:var(--gold-text);border-bottom:1px solid currentColor}
 .credit{margin-top:2.5rem;font-size:.82rem;color:var(--muted);line-height:1.9}
@@ -94,10 +115,23 @@ article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
 </div>
 <h2>何が起きたか</h2>
 <p>マイクロソフトは2026年7月1日を基準日として、Microsoft 365商用ライセンスの価格を改定します。6月に公表された日本円のプレビュー価格では、Business Basicが月944円から1,101円(+16.6%)、フロントライン向けF1は+33.1%。商用Officeとしては2022年以来の値上げで、CopilotをはじめとするAI機能とセキュリティ強化が理由とされています。一方でBusiness Premiumなど据え置きのプランもあります。</p>
+<figure class="viz">
+<figcaption class="viz-title">Microsoft 365 Business Basic 月額料金<span class="viz-unit">(円)</span></figcaption>
+<svg viewBox="0 0 640 300" role="img" aria-label="Microsoft 365 Business Basic 月額料金">
+<line x1="20" y1="254" x2="620" y2="254" stroke="#e7e0d0" stroke-width="1.5"/>
+<rect x="74.0" y="70.5" width="192.0" height="183.5" rx="3" fill="#cca433"/>
+<text x="170.0" y="61.5" text-anchor="middle" font-size="15" font-weight="700" fill="#212947">944</text>
+<text x="170.0" y="280" text-anchor="middle" font-size="14" fill="#5c5e6d">改定前</text><rect x="374.0" y="40.0" width="192.0" height="214.0" rx="3" fill="#cca433"/>
+<text x="470.0" y="31.0" text-anchor="middle" font-size="15" font-weight="700" fill="#212947">1,101</text>
+<text x="470.0" y="280" text-anchor="middle" font-size="14" fill="#5c5e6d">改定後</text>
+</svg>
+<div class="viz-source">出典: 2026年6月公表の日本円プレビュー価格</div>
+</figure>
 <h2>顧客は誰で、何に困っているか</h2>
 <p>顧客は、業務基盤としてMicrosoft 365を使う世界中の企業です。彼らの表向きの困りごとは「コストが上がること」ですが、本質的な困りごとは別にあります。AI活用の遅れへの焦り、高度化するサイバー攻撃への不安、そして「今さらメール・文書基盤を他社に移行するコストは払えない」という現実です。値上げへの不満と、移行できない事情。この間で顧客は「納得できる説明」を求めています。ガートナーも、ユーザーはベンダーに納得のいく説明を求めるべきだと指摘しています。</p>
 <h2>付加価値の構造──「値上げの理由」を機能で先に積む</h2>
 <p>今回の改定で学ぶべきは、値上げと価値追加の順序です。マイクロソフトは値上げに先立ち、Copilot ChatのAgent Modeやセキュリティ機能、管理ツールの拡充をプランに組み込んできました。機能としてはAIアシスタントと防御機能。便益としては、調べ物や資料作成の時間短縮と、情報漏えいリスクの低減。そして顧客にとっての価値は「人を増やさずに仕事が回る」「経営を止める事故を防げる」ことです。</p>
+<div class="flow"><div class="flow-step"><div class="flow-name">機能</div><div class="flow-desc">CopilotなどのAI機能とセキュリティ強化</div></div><div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 40 40" width="26" height="26"><path d="M8 20h20m-8-8 8 8-8 8" fill="none" stroke="#cca433" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="flow-step"><div class="flow-name">便益</div><div class="flow-desc">作業時間の短縮と情報漏えいリスクの低減</div></div><div class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 40 40" width="26" height="26"><path d="M8 20h20m-8-8 8 8-8 8" fill="none" stroke="#cca433" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="flow-step"><div class="flow-name">価値</div><div class="flow-desc">人を増やさずに仕事が回り、経営を止める事故を防げる</div></div></div>
 <p>この機能→便益→価値の変換を先に積み上げたうえで、価格を後から追いつかせる。「同じものを高くする」のではなく「良くなったものに値段を合わせる」順序だからこそ、値上げの説明が成立します。</p>
 <h2>値決めへの接続</h2>
 <p>さらに注目すべきは、継続率を守る値決めの設計です。第一に、既存契約への適用は次回更新日から。予告期間を確保し、6月末までの更新なら現行価格を一定期間ロックできる余地を残しました。第二に、Business Premiumを据え置くことで、「解約」ではなく「上位プランへの移行」という逃げ道を用意しています。値上げに直面した顧客に「やめる/払う」の二択を突きつけず、「より価値の高い選択肢に動く」という第三の道を示す。これは値上げの収益とリテンションを両立させる構造であり、単価を上げながら解約を防ぐSaaSの教科書的な打ち手と言えます。</p>
