@@ -260,6 +260,37 @@ article h3{font-size:1.05rem;margin:2rem 0 .75rem;color:var(--navy)}
 article p{margin-bottom:1.4rem;text-align:justify}
 article a{color:var(--gold-text);border-bottom:1px solid currentColor}
 article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
+/* 用語集 */
+.term-reading{font-size:.85rem;color:var(--muted);margin-left:.7rem;font-weight:400}
+.term-related{margin-top:2.5rem;display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+.tr-label{font-size:.78rem;color:var(--muted);letter-spacing:.1em}
+.term-related a{font-size:.8rem;padding:.15rem .7rem;border:1px solid var(--gold);border-radius:999px;color:var(--gold-text)}
+.term-articles{margin-top:2.5rem;background:#fff;border:1px solid var(--line);border-radius:10px;padding:1.2rem 1.4rem}
+.term-articles h2{font-size:1rem;border:none;padding:0;margin:0 0 .8rem;color:var(--navy)}
+.term-articles ul{list-style:none}
+.term-articles li{padding:.4rem 0;border-bottom:1px dashed var(--line);font-size:.88rem;display:flex;gap:.7rem;align-items:baseline}
+.term-articles li:last-child{border:none}
+.term-articles time{font-size:.75rem;color:var(--muted);flex-shrink:0}
+.term-articles a:hover{color:var(--gold-text)}
+.term-list{list-style:none}
+.term-list li{border-bottom:1px solid var(--line)}
+.term-list a{display:block;padding:1rem .2rem}
+.term-list a:hover .tl-term{color:var(--gold-text)}
+.tl-term{display:block;font-family:"Noto Serif JP","Hiragino Mincho ProN",serif;font-weight:600;color:var(--navy);font-size:1.05rem}
+.tl-def{display:block;font-size:.85rem;color:#555;line-height:1.9;margin-top:.2rem}
+/* 事例データベース */
+.db-controls{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:.8rem}
+#db-q{flex:1;min-width:220px;padding:.5rem .9rem;border:1px solid var(--line);border-radius:8px;font-size:.9rem;background:#fff}
+#db-cat{padding:.5rem .7rem;border:1px solid var(--line);border-radius:8px;font-size:.9rem;background:#fff}
+.db-count{font-size:.78rem;color:var(--muted);margin-bottom:.6rem}
+.db-list{list-style:none}
+.db-list li{padding:.55rem 0;border-bottom:1px dashed var(--line);font-size:.9rem;display:flex;gap:.7rem;align-items:baseline;flex-wrap:wrap}
+.db-list time{font-size:.75rem;color:var(--muted);flex-shrink:0}
+.db-list a{font-weight:500;color:var(--navy)}
+.db-list a:hover{color:var(--gold-text)}
+.db-co{font-size:.78rem;color:var(--muted)}
+/* カテゴリ導入文 */
+.cat-intro{font-size:.92rem;color:#4a4f60;background:var(--cream);border-radius:8px;padding:.9rem 1.2rem;margin:-.5rem 0 1.8rem;line-height:1.95}
 /* 記事内ビジュアル */
 .viz{margin:2.2rem 0;padding:1.4rem 1.4rem 1.1rem;background:#fff;border:1px solid var(--line);border-radius:10px}
 .viz-title{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:.9rem}
@@ -353,7 +384,7 @@ function navHtml(prefix, activeCat, cats) {
         `<a href="${prefix}category/${catSlug(name)}.html"${name === activeCat ? ' class="active"' : ""}>${escapeHtml(name)}<span class="cnt">${n}</span></a>`
     )
     .join("");
-  return `<nav class="catnav"><a href="${prefix}index.html"${activeCat === null ? ' class="active"' : ""}>最新</a>${chips}<a href="${prefix}archive.html"${activeCat === "__archive" ? ' class="active"' : ""}>全記事一覧</a></nav>`;
+  return `<nav class="catnav"><a href="${prefix}index.html"${activeCat === null ? ' class="active"' : ""}>最新</a>${chips}<a href="${prefix}database.html"${activeCat === "__db" ? ' class="active"' : ""}>事例データベース</a><a href="${prefix}terms/index.html"${activeCat === "__terms" ? ' class="active"' : ""}>用語集</a><a href="${prefix}archive.html"${activeCat === "__archive" ? ' class="active"' : ""}>全記事一覧</a></nav>`;
 }
 
 function cardHtml(p, prefix) {
@@ -429,18 +460,21 @@ ${posts.slice(0, INDEX_LIMIT).map((p) => cardHtml(p, "")).join("\n")}
   })
 );
 
-// カテゴリページ
+// カテゴリページ(ハブ)
+const INTROS_PATH = join(ROOT, "prompts", "category-intros.json");
+const catIntros = existsSync(INTROS_PATH) ? JSON.parse(readFileSync(INTROS_PATH, "utf8")) : {};
 mkdirSync(join(OUT_DIR, "category"), { recursive: true });
 for (const [name, n] of cats) {
   const list = posts.filter((p) => p.category === name);
   writeFileSync(
     join(OUT_DIR, "category", `${catSlug(name)}.html`),
     page({
-      title: `${name}の記事一覧 | ${CONFIG.siteName}`,
-      description: `${name}に関する付加価値経営の解説記事(${n}件)`,
+      title: `${name}の付加価値経営 記事一覧 | ${CONFIG.siteName}`,
+      description: catIntros[name] || `${name}に関する付加価値経営の解説記事(${n}件)`,
       path: `/category/${catSlug(name)}.html`,
       bodyHtml: `${navHtml("../", name, cats)}
 <h1 class="page-title">${escapeHtml(name)} <span style="font-size:.8rem;color:var(--muted)">${n}件</span></h1>
+${catIntros[name] ? `<p class="cat-intro">${escapeHtml(catIntros[name])}</p>` : ""}
 <ul class="cards">
 ${list.map((p) => cardHtml(p, "../")).join("\n")}
 </ul>`,
@@ -495,6 +529,110 @@ if (CONFIG.baseUrl) {
     `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${CONFIG.baseUrl}/</loc></url><url><loc>${CONFIG.baseUrl}/archive.html</loc></url>${[...cats.keys()].map((c) => `<url><loc>${CONFIG.baseUrl}/category/${catSlug(c)}.html</loc></url>`).join("")}${posts.map((p) => `<url><loc>${CONFIG.baseUrl}${p.htmlPath}</loc><lastmod>${p.date}</lastmod></url>`).join("")}</urlset>`
   );
 }
+// ---------- 用語集 ----------
+const TERMS_DIR = join(ROOT, "terms");
+const terms = [];
+if (existsSync(TERMS_DIR)) {
+  for (const f of readdirSync(TERMS_DIR).filter((x) => x.endsWith(".md")).sort()) {
+    const { meta, body } = parseFrontmatter(readFileSync(join(TERMS_DIR, f), "utf8"));
+    if (meta.term && meta.slug && meta.definition) terms.push({ ...meta, body });
+  }
+}
+if (terms.length) {
+  mkdirSync(join(OUT_DIR, "terms"), { recursive: true });
+  const termSlugByName = new Map(terms.map((t) => [t.term, t.slug]));
+  for (const t of terms) {
+    const key = t.term.split("(")[0].trim();
+    const relatedArticles = posts
+      .filter((p) => (p.title + " " + (p.tags || "") + " " + p.excerpt).includes(key))
+      .slice(0, 6);
+    const relatedTerms = (t.related || "")
+      .split(/[、,]\s*/)
+      .filter((r) => termSlugByName.has(r))
+      .map((r) => `<a href="${termSlugByName.get(r)}.html">${escapeHtml(r)}</a>`)
+      .join("");
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "DefinedTerm",
+      name: t.term,
+      description: t.definition,
+      inDefinedTermSet: { "@type": "DefinedTermSet", name: `${CONFIG.siteName} 用語集`, url: CONFIG.baseUrl ? `${CONFIG.baseUrl}/terms/index.html` : undefined },
+    };
+    writeFileSync(
+      join(OUT_DIR, "terms", `${t.slug}.html`),
+      page({
+        title: `${t.term}とは | ${CONFIG.siteName} 用語集`,
+        description: t.definition,
+        path: `/terms/${t.slug}.html`,
+        jsonLd,
+        bodyHtml: `${navHtml("../", "__terms", cats)}
+<article class="term">
+<h1>${escapeHtml(t.term)}${t.reading ? `<span class="term-reading">${escapeHtml(t.reading)}</span>` : ""}</h1>
+<p class="lead">${escapeHtml(t.definition)}</p>
+${mdToHtml(t.body)}
+${relatedTerms ? `<div class="term-related"><span class="tr-label">関連用語</span>${relatedTerms}</div>` : ""}
+${relatedArticles.length ? `<div class="term-articles"><h2>この概念が読めるニュース解説</h2><ul>${relatedArticles.map((p) => `<li><time>${p.date.replaceAll("-", ".")}</time><a href="../articles/${p.slug}.html">${escapeHtml(p.title)}</a></li>`).join("")}</ul></div>` : ""}
+<div class="credit">本用語集は、${escapeHtml(CONFIG.company)}が付加価値経営の視点で編纂しています。</div>
+</article>`,
+      })
+    );
+  }
+  writeFileSync(
+    join(OUT_DIR, "terms", "index.html"),
+    page({
+      title: `付加価値経営 用語集 | ${CONFIG.siteName}`,
+      description: `付加価値・値決め・価値転嫁など、付加価値経営の${terms.length}用語を${CONFIG.company}が解説します。`,
+      path: `/terms/index.html`,
+      bodyHtml: `${navHtml("../", "__terms", cats)}
+<h1 class="page-title">付加価値経営 用語集 <span style="font-size:.8rem;color:var(--muted)">${terms.length}語</span></h1>
+<ul class="term-list">
+${terms.map((t) => `<li><a href="${t.slug}.html"><span class="tl-term">${escapeHtml(t.term)}</span><span class="tl-def">${escapeHtml(t.definition)}</span></a></li>`).join("\n")}
+</ul>`,
+    })
+  );
+}
+
+// ---------- 事例データベース ----------
+const dbData = posts.map((p) => ({
+  s: p.slug, t: p.title, c: p.company || "", g: p.category || "", d: p.date, x: p.excerpt, tg: p.tags || "",
+}));
+writeFileSync(
+  join(OUT_DIR, "database.html"),
+  page({
+    title: `事例データベース | ${CONFIG.siteName}`,
+    description: `付加価値・値決めの実例${posts.length}件を企業名・業界・テーマで横断検索できます。`,
+    path: `/database.html`,
+    bodyHtml: `${navHtml("./", "__db", cats)}
+<h1 class="page-title">事例データベース <span style="font-size:.8rem;color:var(--muted)">${posts.length}件</span></h1>
+<div class="db-controls">
+<input id="db-q" type="search" placeholder="企業名・キーワードで検索(例: 値上げ、ホテル、SaaS)">
+<select id="db-cat"><option value="">すべての業界</option>${[...cats.keys()].map((c) => `<option>${escapeHtml(c)}</option>`).join("")}</select>
+</div>
+<div class="db-count" id="db-count"></div>
+<ul class="db-list" id="db-list"></ul>
+<script>
+const DATA=${JSON.stringify(dbData)};
+const q=document.getElementById("db-q"),cat=document.getElementById("db-cat"),list=document.getElementById("db-list"),count=document.getElementById("db-count");
+function esc(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function render(){
+  const kw=q.value.trim().toLowerCase(),c=cat.value;
+  const hits=DATA.filter(r=>(!c||r.g===c)&&(!kw||(r.t+r.c+r.tg+r.x).toLowerCase().includes(kw)));
+  count.textContent=hits.length+"件";
+  list.innerHTML=hits.map(r=>'<li><time>'+r.d.replaceAll("-",".")+'</time><span class="chip chip-cat">'+esc(r.g)+'</span><a href="articles/'+r.s+'.html">'+esc(r.t)+'</a><span class="db-co">'+esc(r.c)+'</span></li>').join("");
+}
+q.addEventListener("input",render);cat.addEventListener("change",render);render();
+</script>`,
+  })
+);
+
+// sitemapを用語集・DB込みで再生成
+if (CONFIG.baseUrl) {
+  writeFileSync(
+    join(OUT_DIR, "sitemap.xml"),
+    `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${CONFIG.baseUrl}/</loc></url><url><loc>${CONFIG.baseUrl}/database.html</loc></url><url><loc>${CONFIG.baseUrl}/archive.html</loc></url><url><loc>${CONFIG.baseUrl}/terms/index.html</loc></url>${terms.map((t) => `<url><loc>${CONFIG.baseUrl}/terms/${t.slug}.html</loc></url>`).join("")}${[...cats.keys()].map((c) => `<url><loc>${CONFIG.baseUrl}/category/${catSlug(c)}.html</loc></url>`).join("")}${posts.map((p) => `<url><loc>${CONFIG.baseUrl}${p.htmlPath}</loc><lastmod>${p.date}</lastmod></url>`).join("")}</urlset>`
+  );
+}
+
 writeFileSync(join(OUT_DIR, ".nojekyll"), "");
 if (CONFIG.customDomain) writeFileSync(join(OUT_DIR, "CNAME"), CONFIG.customDomain + "\n");
 if (existsSync(ASSETS_DIR)) cpSync(ASSETS_DIR, join(OUT_DIR, "assets"), { recursive: true });
