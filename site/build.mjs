@@ -231,7 +231,8 @@ footer.site a{color:var(--gold)}
 .card-body{padding:1rem 1.2rem 1.35rem}
 .card-meta{display:flex;align-items:center;gap:.6rem;margin-bottom:.4rem}
 .card time{font-size:.75rem;color:var(--muted);letter-spacing:.1em}
-.chip{display:inline-block;font-size:.68rem;color:var(--navy);background:var(--cream);border-radius:999px;padding:.05rem .6rem;line-height:1.6}
+.chip{display:inline-block;font-size:.68rem;color:var(--navy);background:var(--cream);border-radius:999px;padding:.05rem .6rem;line-height:1.6;white-space:nowrap}
+.card-meta{flex-wrap:wrap}
 .card h2{font-family:"Noto Serif JP","Hiragino Mincho ProN",serif;font-size:1.12rem;line-height:1.65;font-weight:600;color:var(--navy);margin:.15rem 0 .4rem}
 .card:hover h2{color:var(--gold-text)}
 .card p{font-size:.85rem;color:#4c4c4c;line-height:1.85;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
