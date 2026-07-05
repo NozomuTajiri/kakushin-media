@@ -3,6 +3,7 @@
   "tagline": "世界のニュースを、付加価値のレンズで読み解く",
   "company": "株式会社カクシン",
   "companyUrl": "https://kakushin.biz",
-  "baseUrl": "https://nozomutajiri.github.io/kakushin-media",
-  "baseUrlNote": "GitHub Pages公開URL。独自ドメイン移行時はここを変えて再ビルドするだけ。"
+  "baseUrl": "https://news.kakushin.biz",
+  "customDomain": "news.kakushin.biz",
+  "baseUrlNote": "独自ドメイン。customDomainを設定するとビルド時にdocs/CNAMEが生成される。"
 }

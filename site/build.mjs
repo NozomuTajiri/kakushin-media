@@ -200,6 +200,7 @@ if (CONFIG.baseUrl) {
   );
 }
 writeFileSync(join(OUT_DIR, ".nojekyll"), "");
+if (CONFIG.customDomain) writeFileSync(join(OUT_DIR, "CNAME"), CONFIG.customDomain + "\n");
 
 console.log(`✔ built ${posts.length} article(s) -> ${OUT_DIR}`);
 if (!CONFIG.baseUrl) console.log("  (baseUrl未設定のため feed.xml / sitemap.xml はスキップ)");
