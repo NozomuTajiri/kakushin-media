@@ -5,7 +5,7 @@
 // デザイン: カクシン公式パレット(kakushin.bizから抽出)
 //   ゴールド#cca433 / ネイビー#212947 / テキスト#333 / クリーム#f7f1e3 / Noto Serif JP + Noto Sans JP
 
-import { readFileSync, writeFileSync, readdirSync, mkdirSync, rmSync, existsSync } from "node:fs";
+import { readFileSync, writeFileSync, readdirSync, mkdirSync, rmSync, existsSync, cpSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -90,6 +90,15 @@ function heroSvg(slug, w = 1200, h = 360) {
   const ax = w * (0.05 + rnd() * 0.15);
   shapes += `<path d="M ${ax.toFixed(0)} ${(h * 0.85).toFixed(0)} Q ${(w * 0.45).toFixed(0)} ${(h * (0.55 + rnd() * 0.2)).toFixed(0)} ${(w * 0.92).toFixed(0)} ${(h * 0.12).toFixed(0)}" fill="none" stroke="${gold}" stroke-width="2.5" opacity="0.8"/>`;
   return `<svg viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true"><defs><linearGradient id="g-${hashOf(slug) % 9999}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1a2138"/><stop offset="1" stop-color="#2a3355"/></linearGradient></defs><rect width="${w}" height="${h}" fill="url(#g-${hashOf(slug) % 9999})"/>${shapes}</svg>`;
+}
+
+// ---------- ヒーロー画像(assets/<slug>.jpg があれば使用、なければブランドアートSVG) ----------
+const ASSETS_DIR = join(ROOT, "assets");
+function heroFor(slug, prefix, w, h) {
+  if (existsSync(join(ASSETS_DIR, `${slug}.jpg`))) {
+    return `<img src="${prefix}assets/${slug}.jpg" alt="" loading="lazy" width="1200" height="800">`;
+  }
+  return heroSvg(slug, w, h);
 }
 
 // ---------- 現状→理想ブロック ----------
@@ -180,7 +189,8 @@ ${CONFIG.baseUrl ? `<link rel="canonical" href="${CONFIG.baseUrl}${path}">
 <meta property="og:title" content="${escapeHtml(title)}">
 <meta property="og:description" content="${escapeHtml(description)}">
 <meta property="og:type" content="article">
-<meta property="og:url" content="${CONFIG.baseUrl}${path}">` : ""}
+<meta property="og:url" content="${CONFIG.baseUrl}${path}">
+${path.startsWith("/articles/") && existsSync(join(ROOT, "assets", path.replace("/articles/", "").replace(".html", "") + ".jpg")) ? `<meta property="og:image" content="${CONFIG.baseUrl}/assets/${path.replace("/articles/", "").replace(".html", "")}.jpg">` : ""}` : ""}
 ${jsonLd ? `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>` : ""}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -226,7 +236,7 @@ for (const p of posts) {
   const bodyHtml = `
 <div class="crumb"><a href="../index.html">← 付加価値ニュース 一覧</a></div>
 <article>
-<div class="hero">${heroSvg(p.slug)}</div>
+<div class="hero">${heroFor(p.slug, "../", 1200, 360)}</div>
 <h1>${escapeHtml(p.title)}</h1>
 <div class="meta"><time datetime="${p.date}">${p.date.replaceAll("-", ".")}</time>${chips(p.tags)}</div>
 <p class="lead">${escapeHtml(p.excerpt)}</p>
@@ -255,7 +265,7 @@ const indexBody = `
 ${posts
   .map(
     (p) => `<li class="card"><a class="card-link" href="articles/${p.slug}.html">
-  ${heroSvg(p.slug, 800, 240)}
+  ${heroFor(p.slug, "", 800, 240)}
   <div class="card-body">
     <div class="card-meta"><time datetime="${p.date}">${p.date.replaceAll("-", ".")}</time>${chips(p.tags)}</div>
     <h2>${escapeHtml(p.title)}</h2>
@@ -291,6 +301,7 @@ if (CONFIG.baseUrl) {
 }
 writeFileSync(join(OUT_DIR, ".nojekyll"), "");
 if (CONFIG.customDomain) writeFileSync(join(OUT_DIR, "CNAME"), CONFIG.customDomain + "\n");
+if (existsSync(ASSETS_DIR)) cpSync(ASSETS_DIR, join(OUT_DIR, "assets"), { recursive: true });
 
 console.log(`✔ built ${posts.length} article(s) -> ${OUT_DIR}`);
 const noTransform = posts.filter((p) => !p.genjo || !p.riso).map((p) => p.slug);
