@@ -32,6 +32,7 @@ function mdToHtml(md, meta = {}) {
       if (b === "{{chart}}") return meta.chart ? renderChart(meta.chart) : "";
       if (b === "{{vs}}") return meta.vs ? renderVs(meta.vs) : "";
       if (b === "{{flow}}") return meta.flow ? renderFlow(meta.flow) : "";
+      if (b === "{{kando}}") return meta.kando ? renderKando(meta.kando) : "";
       if (b.startsWith("### ")) return `<h3>${inline(b.slice(4))}</h3>`;
       if (b.startsWith("## ")) return `<h2>${inline(b.slice(3))}</h2>`;
       if (b === "---") return "<hr>";
@@ -78,6 +79,14 @@ function renderVs(spec) {
   return `<div class="vs">
 <div class="vs-col vs-a"><div class="vs-head">${escapeHtml(heads[0])}</div><ul>${col(0)}</ul></div>
 <div class="vs-col vs-b"><div class="vs-head">${escapeHtml(heads[1])}</div><ul>${col(1)}</ul></div>
+</div>`;
+}
+
+// 感動価値ブロック: 事例に感動価値が見出せる時だけ使う(編集方針参照)
+function renderKando(text) {
+  return `<div class="kando">
+<div class="kando-label"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 2l2.4 6.2L21 9.3l-5 4.4 1.5 6.6L12 16.8 6.5 20.3 8 13.7 3 9.3l6.6-1.1z" fill="#cca433"/></svg>この事例の感動価値</div>
+<p>${escapeHtml(text)}</p>
 </div>`;
 }
 
@@ -256,6 +265,9 @@ article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
 .flow-desc{font-size:.78rem;color:var(--muted);line-height:1.7;margin-top:.25rem}
 .flow-arrow{align-self:center}
 @media(max-width:560px){.vs{grid-template-columns:1fr}.flow{flex-direction:column}.flow-arrow{transform:rotate(90deg);align-self:center}}
+.kando{margin:2.2rem 0;padding:1.2rem 1.4rem;background:linear-gradient(135deg,#fdf9ee,#f7f1e3);border:1px solid var(--gold);border-left:5px solid var(--gold);border-radius:8px}
+.kando-label{display:flex;align-items:center;gap:.45rem;font-weight:700;font-size:.88rem;color:var(--navy);letter-spacing:.08em;margin-bottom:.45rem}
+.kando p{margin:0;font-size:.95rem;line-height:2;color:#3a3f52}
 .source{margin-top:3rem;padding:1.1rem 1.25rem;background:var(--cream);border-radius:6px;font-size:.82rem;color:#555;line-height:1.9}
 .source a{color:var(--gold-text);border-bottom:1px solid currentColor}
 .credit{margin-top:2.5rem;font-size:.82rem;color:var(--muted);line-height:1.9}
