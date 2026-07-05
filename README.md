@@ -1,28 +1,34 @@
 # kakushin-media — 付加価値ニュース自動メディア
 
 株式会社カクシンの認知・想起向上のための全自動コンテンツパイプライン。
-一般ニュースを「付加価値レンズ」で解釈した記事を毎日生成し、Wixブログに自動投稿する。
+一般ニュースを「付加価値レンズ」で解釈した記事を毎日生成し、自前の静的サイトとして公開する。
 
-## アーキテクチャ
+## アーキテクチャ(2026-07-05にWix投稿方式から移行)
 ```
-[毎朝6:30] kakushin-media-daily (スケジュールタスク)
-  → sources.md のクエリでWebSearch(ニュース収集)
-  → published.jsonl と照合(重複回避)
-  → editorial.md のフレームで記事生成
-  → Wix Blog API で投稿 (config.mode: draft=下書き / publish=自動公開)
-  → published.jsonl に記録
+[毎朝6:44] kakushin-media-daily (スケジュールタスク)
+  → prompts/sources.md のクエリでWebSearch(ニュース収集)
+  → logs/published.jsonl と照合(重複回避)
+  → prompts/editorial.md のフレームで記事Markdown生成 → articles/
+  → node site/build.mjs で docs/ にHTML生成(デザインはbuild.mjs内で完結)
+  → git commit & push(origin設定済みの場合) → GitHub Pagesで自動公開
 
-[毎週月曜7:30] kakushin-media-monitor (監視タスク)
-  → 直近7日の published.jsonl を検査
-  → Wix APIで実際の投稿存在を照合
-  → 欠落・エラーを health-report.md に出力、異常があれば通知
+[毎週月曜7:46] kakushin-media-monitor (監視タスク)
+  → ログ集計・記事実体照合・ビルド検証・git状態・公開サイト照合
+  → logs/health-report.md に出力、異常は【要対応】通知
 ```
 
-## 運用モード
-- 現在: `draft` — 記事はWixの下書きに入る。公開は人間がワンクリック。
-- 品質に納得したら config.json の mode を `publish` に変えるだけで完全自動公開になる。
+## ディレクトリ
+- `articles/` — 記事Markdown(frontmatter付き)。**これが一次資産**
+- `site/build.mjs` — 静的サイトジェネレーター(Node単体・依存なし)
+- `docs/` — ビルド出力(GitHub Pagesの公開ディレクトリ)。手編集しない
+- `prompts/` — 編集方針(editorial.md)と収集クエリ(sources.md)
+- `logs/` — published.jsonl(投稿記録) / errors.jsonl / health-report.md
+- `site.config.json` — サイト名・会社情報・baseUrl
 
-## 注意
-- スケジュールタスクはClaude(このアプリ)が起動している間に実行される。
-  閉じていた場合は次回起動時に実行される。
-- Wixサイト: Kakushin Corp (siteId: 048ea057-aa11-4067-a02d-50107b3fbdfc)
+## デプロイ接続(1回だけ必要な手作業)
+1. `gh auth login` でGitHubにログイン
+2. Claudeに「デプロイ接続して」と言う → リポジトリ作成・push・GitHub Pages有効化・baseUrl設定まで自動
+3. 以後は毎朝のタスクがpushするだけで公開される
+
+## 旧Wix方式の残骸
+- Kakushin CorpサイトのWixブログに下書き1件(2026-07-05のサンプル記事)とBlogアプリが残っている。不要なら削除可。
