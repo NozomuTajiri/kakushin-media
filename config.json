@@ -1,0 +1,16 @@
+{
+  "project": "kakushin-media",
+  "siteName": "Kakushin Corp",
+  "wixSiteId": "048ea057-aa11-4067-a02d-50107b3fbdfc",
+  "mode": "draft",
+  "modeNote": "draft = Wixに下書き投稿のみ(人が公開ボタンを押す) / publish = 完全自動公開。品質確認期間が終わったら publish に変更する。",
+  "articlesPerDay": 1,
+  "language": "ja",
+  "paths": {
+    "editorialPrompt": "/Users/nozomutajiri/Claude/SFA/kakushin-media/prompts/editorial.md",
+    "sources": "/Users/nozomutajiri/Claude/SFA/kakushin-media/prompts/sources.md",
+    "publishedLog": "/Users/nozomutajiri/Claude/SFA/kakushin-media/logs/published.jsonl",
+    "errorLog": "/Users/nozomutajiri/Claude/SFA/kakushin-media/logs/errors.jsonl",
+    "healthReport": "/Users/nozomutajiri/Claude/SFA/kakushin-media/logs/health-report.md"
+  }
+}

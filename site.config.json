@@ -1,0 +1,8 @@
+{
+  "siteName": "付加価値ニュース",
+  "tagline": "世界のニュースを、付加価値のレンズで読み解く",
+  "company": "株式会社カクシン",
+  "companyUrl": "https://kakushin.biz",
+  "baseUrl": "",
+  "baseUrlNote": "GitHub Pages接続後に https://<user>.github.io/kakushin-media などを設定。設定するとfeed.xml/sitemap.xml/OGPが生成される。"
+}
