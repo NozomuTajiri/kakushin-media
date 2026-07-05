@@ -276,6 +276,7 @@ ${CONFIG.baseUrl ? `<link rel="canonical" href="${CONFIG.baseUrl}${path}">
 <meta property="og:url" content="${CONFIG.baseUrl}${path}">
 ${path.startsWith("/articles/") && existsSync(join(ROOT, "assets", path.replace("/articles/", "").replace(".html", "") + ".jpg")) ? `<meta property="og:image" content="${CONFIG.baseUrl}/assets/${path.replace("/articles/", "").replace(".html", "")}.jpg">` : ""}` : ""}
 ${jsonLd ? `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>` : ""}
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23212947'/%3E%3Ctext x='50' y='72' font-size='58' text-anchor='middle' fill='%23cca433' font-family='serif' font-weight='bold'%3E価%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&display=swap">
