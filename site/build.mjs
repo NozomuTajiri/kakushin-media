@@ -351,7 +351,8 @@ ${bodyHtml}
 </div></main>
 <footer class="site"><div class="wrap">
   運営: <a href="${CONFIG.companyUrl}" rel="noopener">${escapeHtml(CONFIG.company)}</a> ─
-  世界のニュースを付加価値経営の視点で毎日解説しています。<br>
+  世界のニュースを付加価値経営の視点で毎日解説しています。
+  <a href="${rel(path)}about.html">このメディアについて・編集方針</a><br>
   &copy; ${new Date().getFullYear()} ${escapeHtml(CONFIG.company)}
 </div></footer>
 </body>
@@ -625,11 +626,30 @@ q.addEventListener("input",render);cat.addEventListener("change",render);render(
   })
 );
 
+// ---------- 運営者情報・編集方針 ----------
+const ABOUT_PATH = join(ROOT, "about.md");
+if (existsSync(ABOUT_PATH)) {
+  const aboutMd = readFileSync(ABOUT_PATH, "utf8").replace(/^# .+\n/, "");
+  writeFileSync(
+    join(OUT_DIR, "about.html"),
+    page({
+      title: `このメディアについて・運営者情報 | ${CONFIG.siteName}`,
+      description: `${CONFIG.siteName}の運営者情報と編集方針。運営: ${CONFIG.company}`,
+      path: "/about.html",
+      bodyHtml: `${navHtml("./", "__about", cats)}
+<article>
+<h1>このメディアについて</h1>
+${mdToHtml(aboutMd)}
+</article>`,
+    })
+  );
+}
+
 // sitemapを用語集・DB込みで再生成
 if (CONFIG.baseUrl) {
   writeFileSync(
     join(OUT_DIR, "sitemap.xml"),
-    `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${CONFIG.baseUrl}/</loc></url><url><loc>${CONFIG.baseUrl}/database.html</loc></url><url><loc>${CONFIG.baseUrl}/archive.html</loc></url><url><loc>${CONFIG.baseUrl}/terms/index.html</loc></url>${terms.map((t) => `<url><loc>${CONFIG.baseUrl}/terms/${t.slug}.html</loc></url>`).join("")}${[...cats.keys()].map((c) => `<url><loc>${CONFIG.baseUrl}/category/${catSlug(c)}.html</loc></url>`).join("")}${posts.map((p) => `<url><loc>${CONFIG.baseUrl}${p.htmlPath}</loc><lastmod>${p.date}</lastmod></url>`).join("")}</urlset>`
+    `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${CONFIG.baseUrl}/</loc></url><url><loc>${CONFIG.baseUrl}/database.html</loc></url><url><loc>${CONFIG.baseUrl}/about.html</loc></url><url><loc>${CONFIG.baseUrl}/archive.html</loc></url><url><loc>${CONFIG.baseUrl}/terms/index.html</loc></url>${terms.map((t) => `<url><loc>${CONFIG.baseUrl}/terms/${t.slug}.html</loc></url>`).join("")}${[...cats.keys()].map((c) => `<url><loc>${CONFIG.baseUrl}/category/${catSlug(c)}.html</loc></url>`).join("")}${posts.map((p) => `<url><loc>${CONFIG.baseUrl}${p.htmlPath}</loc><lastmod>${p.date}</lastmod></url>`).join("")}</urlset>`
   );
 }
 
