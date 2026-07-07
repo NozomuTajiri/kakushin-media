@@ -85,6 +85,17 @@ article h3{font-size:1.05rem;margin:2rem 0 .75rem;color:var(--navy)}
 article p{margin-bottom:1.4rem;text-align:justify}
 article a{color:var(--gold-text);border-bottom:1px solid currentColor}
 article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
+/* 関連記事 */
+.related{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--line)}
+.related h2{font-family:"Noto Serif JP","Hiragino Mincho ProN",serif;font-size:1.15rem;color:var(--navy);margin-bottom:1.2rem;font-weight:600}
+.rel-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:560px){.rel-list{grid-template-columns:1fr}}
+.rel-list li{background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;transition:box-shadow .2s}
+.rel-list li:hover{box-shadow:0 6px 16px rgba(33,41,71,.12)}
+.rel-list a{display:block}
+.rel-list img,.rel-list svg{display:block;width:100%;height:auto;aspect-ratio:21/9;object-fit:cover}
+.rel-t{display:block;font-size:.88rem;font-weight:600;color:var(--navy);line-height:1.6;padding:.6rem .8rem .1rem}
+.rel-d{display:block;font-size:.72rem;color:var(--muted);padding:0 .8rem .7rem}
 /* 用語集 */
 .term-reading{font-size:.85rem;color:var(--muted);margin-left:.7rem;font-weight:400}
 .term-related{margin-top:2.5rem;display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
@@ -151,7 +162,7 @@ article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
   <div class="tagline">世界のニュースを、付加価値のレンズで読み解く ─ 株式会社カクシン</div>
 </div></header>
 <main><div class="wrap">
-<nav class="catnav"><a href="../index.html">最新</a><a href="../category/kouri.html">小売・流通<span class="cnt">13</span></a><a href="../category/global.html">海外事例<span class="cnt">13</span></a><a href="../category/shohizai.html">消費財・食品<span class="cnt">13</span></a><a href="../category/entertainment.html">エンタメ・レジャー<span class="cnt">12</span></a><a href="../category/it-saas.html">IT・SaaS<span class="cnt">12</span></a><a href="../category/seizo.html">製造業・B2B<span class="cnt">12</span></a><a href="../category/gaishoku.html">外食・サービス<span class="cnt">12</span></a><a href="../category/finance-infra.html">金融・インフラ<span class="cnt">11</span></a><a href="../category/services.html">サービス業<span class="cnt">11</span></a><a href="../category/macro.html">マクロ・調査<span class="cnt">2</span></a><a href="../database.html">事例データベース</a><a href="../terms/index.html" class="active">用語集</a><a href="../archive.html">全記事一覧</a></nav>
+<nav class="catnav"><a href="../index.html">最新</a><a href="../category/kouri.html">小売・流通<span class="cnt">13</span></a><a href="../category/global.html">海外事例<span class="cnt">13</span></a><a href="../category/shohizai.html">消費財・食品<span class="cnt">13</span></a><a href="../category/entertainment.html">エンタメ・レジャー<span class="cnt">12</span></a><a href="../category/it-saas.html">IT・SaaS<span class="cnt">12</span></a><a href="../category/seizo.html">製造業・B2B<span class="cnt">12</span></a><a href="../category/gaishoku.html">外食・サービス<span class="cnt">12</span></a><a href="../category/finance-infra.html">金融・インフラ<span class="cnt">11</span></a><a href="../category/services.html">サービス業<span class="cnt">11</span></a><a href="../category/macro.html">マクロ・調査<span class="cnt">2</span></a><a href="../database.html">事例データベース</a><a href="../terms/index.html" class="active">用語集</a><a href="../guides/index.html">実践ガイド</a><a href="../archive.html">全記事一覧</a></nav>
 <article class="term">
 <h1>値上げ疲れ<span class="term-reading">ねあげづかれ</span></h1>
 <p class="lead">値上げ疲れとは、食品や日用品などの値上げが長期間相次いだ結果、消費者の許容度が低下し、買い控えや節約志向、低価格品への乗り換えが強まる状態を指す言葉です。値上げが浸透しにくくなり、企業の価格転嫁の難易度が上がる局面を表します。</p>

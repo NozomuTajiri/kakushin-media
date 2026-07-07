@@ -1,0 +1,47 @@
+# 付加価値ニュース
+
+> 世界のニュースを、付加価値のレンズで読み解く。運営: 株式会社カクシン(https://kakushin.biz)。実在の報道・一次情報に基づき、値上げ・差別化・高付加価値化の実例を「顧客価値の構造」から解説する経営者向けメディア。
+
+## 主要ページ
+- [このメディアについて・編集方針](https://news.kakushin.biz/about.html)
+- [用語集(付加価値経営の20用語の定義)](https://news.kakushin.biz/terms/index.html)
+- [事例データベース(111件を横断検索)](https://news.kakushin.biz/database.html)
+- [実践ガイド](https://news.kakushin.biz/guides/index.html)
+- [全記事一覧](https://news.kakushin.biz/archive.html)
+
+## 用語集
+- [置換価値](https://news.kakushin.biz/terms/chikan-kachi.html): 置換価値とは、株式会社カクシン代表・田尻望氏が著書『付加価値のつくりかた』で示した付加価値の3分類の一つで、顧客がすでに行っていることを、より便利・効率的な手段に置き換えることで生まれる価値のことです。
+- [コモディティ化](https://news.kakushin.biz/terms/commodity-ka.html): コモディティ化とは、技術の成熟や競合の模倣によって製品・サービスの機能や品質の差が縮小し、顧客にとって「どれを選んでも同じ」となり、価格だけが選択基準になる現象です。差別化が失われた市場では、企業は必然的に価格競争へと巻き込まれます。
+- [コスト転嫁](https://news.kakushin.biz/terms/cost-tenka.html): コスト転嫁とは、原材料費・エネルギー費・人件費などのコスト上昇分を販売価格に上乗せし、取引先や消費者に負担してもらうことです。値上げの根拠をコストに置く価格改定であり、日本では「価格転嫁」とほぼ同義で使われます。
+- [ダイナミックプライシング](https://news.kakushin.biz/terms/dynamic-pricing.html): ダイナミックプライシングとは、需要と供給の変動に応じて商品・サービスの価格を機動的に変える価格設定手法です。航空券やホテル、イベントチケットなどで導入が進み、需要予測データやAIを活用して収益の最大化と販売機会の平準化を図ります。
+- [付加価値経営](https://news.kakushin.biz/terms/fukakachi-keiei.html): 付加価値経営とは、売上や規模の拡大ではなく、生み出す付加価値の最大化を経営の中心に据える考え方です。顧客のニーズを起点に価値をつくり、価値に見合う値決めで利益に変え、賃上げや再投資に分配する循環によって、高収益と高賃金の両立を目指します。
+- [付加価値](https://news.kakushin.biz/terms/fukakachi.html): 付加価値とは、企業が外部から仕入れた財やサービスに、自社の活動によって新たに付け加えた価値のことです。会計上は売上高から外部購入費用を差し引いた額を指し、顧客視点では「顧客のニーズを満たすことで生まれる、価格の根拠となる価値」を意味します。
+- [価値転嫁](https://news.kakushin.biz/terms/kachi-tenka.html): 価値転嫁とは、自社の製品やサービスが顧客にもたらす価値の大きさを根拠として、その価値を価格に反映させる値決めの考え方です。コスト上昇を理由とするコスト転嫁と対比され、顧客が得る価値を定量化・言語化した上で価格に乗せることを指します。
+- [価格弾力性](https://news.kakushin.biz/terms/kakaku-danryokusei.html): 価格弾力性とは、価格が変化したときに需要量がどの程度変化するかを示す経済学の指標です。需要の変化率を価格の変化率で割って求め、値が1より大きければ「弾力的」、小さければ「非弾力的」と呼ばれ、値上げ・値下げの影響を予測する基礎になります。
+- [価格競争](https://news.kakushin.biz/terms/kakaku-kyoso.html): 価格競争とは、企業が市場シェアの獲得・維持のために、価格の引き下げを主な手段として競い合う状態です。製品の同質化が進んだ市場で起こりやすく、業界全体の利益率を低下させ、体力の乏しい企業から撤退を迫られる消耗戦になりがちです。
+- [感動価値](https://news.kakushin.biz/terms/kando-kachi.html): 感動価値とは、株式会社カクシン代表・田尻望氏が著書『付加価値のつくりかた』で示した付加価値の3分類の一つで、顧客の期待を超えて感情を動かし、驚きや感動をもたらすことで生まれる価値のことです。同書では3分類の中で最も高い付加価値とされています。
+- [機能・便益・価値の変換](https://news.kakushin.biz/terms/kino-beneki-kachi.html): 機能・便益・価値の変換とは、商品が持つ機能の説明にとどめず、それが顧客にもたらす便益、さらに顧客が感じる価値へと言い換えて捉え直す思考法です。キーエンス出身の田尻望氏(株式会社カクシン代表)が、付加価値を生み出す基本動作として紹介しています。
+- [客単価](https://news.kakushin.biz/terms/kyakutanka.html): 客単価とは、顧客一人が1回の購買で支払う平均金額を示す指標です。売上高を購買客数で割って算出され、売上は「客数×客単価」に分解できるため、小売・飲食・ECをはじめ幅広い業種で、売上向上策を検討する際の基本指標として使われます。
+- [LTV(顧客生涯価値)](https://news.kakushin.biz/terms/ltv.html): LTV(顧客生涯価値、Life Time Value)とは、一人の顧客が取引を開始してから終了するまでの全期間に、企業へもたらす利益の総額を示す指標です。平均購買単価・購買頻度・継続期間などから算出され、顧客との長期的な関係の経済価値を測ります。
+- [値上げ疲れ](https://news.kakushin.biz/terms/neage-zukare.html): 値上げ疲れとは、食品や日用品などの値上げが長期間相次いだ結果、消費者の許容度が低下し、買い控えや節約志向、低価格品への乗り換えが強まる状態を指す言葉です。値上げが浸透しにくくなり、企業の価格転嫁の難易度が上がる局面を表します。
+- [ニーズの裏のニーズ](https://news.kakushin.biz/terms/needs-no-ura.html): ニーズの裏のニーズとは、顧客が口にする要望(顕在ニーズ)のさらに奥にある、顧客自身も明確に自覚していない本質的な目的や潜在ニーズのことです。株式会社カクシンが提唱する概念で、これを捉えて叶えることが高付加価値につながるとされています。
+- [値決め](https://news.kakushin.biz/terms/nekime.html): 値決めとは、自社の製品やサービスの販売価格を、意思を持って決定する経営行為のことです。原価計算の結果として価格が決まるのではなく、顧客が感じる価値、競合状況、自社の利益構造を踏まえて経営者が価格を定めることを指します。
+- [プレミアム戦略](https://news.kakushin.biz/terms/premium-senryaku.html): プレミアム戦略とは、品質・ブランド・体験の面で独自の価値を提供し、競合より高い価格を正当化することで価格競争を回避する経営戦略です。高価格帯に絞って希少性と信頼を築き、価格ではなく価値で選ばれるポジションの確立を目指します。
+- [リスク軽減価値](https://news.kakushin.biz/terms/risk-keigen-kachi.html): リスク軽減価値とは、株式会社カクシン代表・田尻望氏が著書『付加価値のつくりかた』で示した付加価値の3分類の一つで、顧客が抱える不安や損失の可能性を減らすことで生まれる価値のことです。事故・故障・信用毀損などの回避が典型です。
+- [指名買い](https://news.kakushin.biz/terms/shimei-gai.html): 指名買いとは、顧客が商品カテゴリーの中から比較検討するのではなく、特定のブランド名・商品名・企業名を名指しして購入する行動です。代替品との比較を経ずに選ばれるため価格競争の影響を受けにくく、ブランド力や顧客ロイヤルティの強さを示します。
+- [バリューベースプライシング](https://news.kakushin.biz/terms/value-based-pricing.html): バリューベースプライシングとは、製品・サービスの原価や競合の価格ではなく、顧客が受け取る価値を基準に価格を決める手法です。顧客にとっての経済的・心理的な便益を見積もり、その価値の一部を対価として設定することで、価値と価格を一致させます。
+
+## カテゴリ
+- [小売・流通](https://news.kakushin.biz/category/kouri.html)
+- [エンタメ・レジャー](https://news.kakushin.biz/category/entertainment.html)
+- [海外事例](https://news.kakushin.biz/category/global.html)
+- [金融・インフラ](https://news.kakushin.biz/category/finance-infra.html)
+- [IT・SaaS](https://news.kakushin.biz/category/it-saas.html)
+- [消費財・食品](https://news.kakushin.biz/category/shohizai.html)
+- [製造業・B2B](https://news.kakushin.biz/category/seizo.html)
+- [マクロ・調査](https://news.kakushin.biz/category/macro.html)
+- [外食・サービス](https://news.kakushin.biz/category/gaishoku.html)
+- [サービス業](https://news.kakushin.biz/category/services.html)
+
+## 記事
+全記事は [sitemap.xml](https://news.kakushin.biz/sitemap.xml) を参照。

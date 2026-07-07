@@ -22,6 +22,7 @@ function inline(text) {
   let t = escapeHtml(text);
   t = t.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
   t = t.replace(/\[([^\]]+)\]\((https?:[^)\s]+)\)/g, '<a href="$2" rel="noopener">$1</a>');
+  t = t.replace(/\[([^\]]+)\]\(((?:\.\.\/|\.\/)?[\w./-]+\.html)\)/g, '<a href="$2">$1</a>');
   return t;
 }
 
@@ -260,6 +261,17 @@ article h3{font-size:1.05rem;margin:2rem 0 .75rem;color:var(--navy)}
 article p{margin-bottom:1.4rem;text-align:justify}
 article a{color:var(--gold-text);border-bottom:1px solid currentColor}
 article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
+/* 関連記事 */
+.related{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--line)}
+.related h2{font-family:"Noto Serif JP","Hiragino Mincho ProN",serif;font-size:1.15rem;color:var(--navy);margin-bottom:1.2rem;font-weight:600}
+.rel-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:560px){.rel-list{grid-template-columns:1fr}}
+.rel-list li{background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;transition:box-shadow .2s}
+.rel-list li:hover{box-shadow:0 6px 16px rgba(33,41,71,.12)}
+.rel-list a{display:block}
+.rel-list img,.rel-list svg{display:block;width:100%;height:auto;aspect-ratio:21/9;object-fit:cover}
+.rel-t{display:block;font-size:.88rem;font-weight:600;color:var(--navy);line-height:1.6;padding:.6rem .8rem .1rem}
+.rel-d{display:block;font-size:.72rem;color:var(--muted);padding:0 .8rem .7rem}
 /* 用語集 */
 .term-reading{font-size:.85rem;color:var(--muted);margin-left:.7rem;font-weight:400}
 .term-related{margin-top:2.5rem;display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
@@ -385,7 +397,7 @@ function navHtml(prefix, activeCat, cats) {
         `<a href="${prefix}category/${catSlug(name)}.html"${name === activeCat ? ' class="active"' : ""}>${escapeHtml(name)}<span class="cnt">${n}</span></a>`
     )
     .join("");
-  return `<nav class="catnav"><a href="${prefix}index.html"${activeCat === null ? ' class="active"' : ""}>最新</a>${chips}<a href="${prefix}database.html"${activeCat === "__db" ? ' class="active"' : ""}>事例データベース</a><a href="${prefix}terms/index.html"${activeCat === "__terms" ? ' class="active"' : ""}>用語集</a><a href="${prefix}archive.html"${activeCat === "__archive" ? ' class="active"' : ""}>全記事一覧</a></nav>`;
+  return `<nav class="catnav"><a href="${prefix}index.html"${activeCat === null ? ' class="active"' : ""}>最新</a>${chips}<a href="${prefix}database.html"${activeCat === "__db" ? ' class="active"' : ""}>事例データベース</a><a href="${prefix}terms/index.html"${activeCat === "__terms" ? ' class="active"' : ""}>用語集</a><a href="${prefix}guides/index.html"${activeCat === "__guides" ? ' class="active"' : ""}>実践ガイド</a><a href="${prefix}archive.html"${activeCat === "__archive" ? ' class="active"' : ""}>全記事一覧</a></nav>`;
 }
 
 function cardHtml(p, prefix) {
@@ -415,30 +427,65 @@ for (const f of files) {
 }
 
 for (const p of posts) {
+  // 関連記事(同カテゴリ+タグ一致でスコアリング)
+  const pTags = (p.tags || "").split(/[、,]\s*/).filter(Boolean);
+  const related = posts
+    .filter((q) => q.slug !== p.slug)
+    .map((q) => {
+      const qTags = (q.tags || "").split(/[、,]\s*/);
+      const overlap = pTags.filter((t) => qTags.includes(t)).length;
+      return { q, score: (q.category === p.category ? 2 : 0) + overlap };
+    })
+    .filter((r) => r.score > 0)
+    .sort((a, b) => b.score - a.score || (a.q.date < b.q.date ? 1 : -1))
+    .slice(0, 4)
+    .map((r) => r.q);
+
   const bodyHtml = `
-<div class="crumb"><a href="../index.html">← 付加価値ニュース 一覧</a></div>
+<div class="crumb"><a href="../index.html">ホーム</a> › ${p.category ? `<a href="../category/${catSlug(p.category)}.html">${escapeHtml(p.category)}</a>` : `<a href="../index.html">一覧</a>`}</div>
 <article>
 <div class="hero">${heroFor(p.slug, "../", 1200, 360)}</div>
 <h1>${escapeHtml(p.title)}</h1>
-<div class="meta"><time datetime="${p.date}">${p.date.replaceAll("-", ".")}</time>${chips(p.tags)}</div>
+<div class="meta"><time datetime="${p.date}">${p.date.replaceAll("-", ".")}</time>${p.category ? `<span class="chip chip-cat">${escapeHtml(p.category)}</span>` : ""}${chips(p.tags)}</div>
 <p class="lead">${escapeHtml(p.excerpt)}</p>
 ${transformBlock(p)}
 ${mdToHtml(p.body, p)}
 ${p.source_name ? `<div class="source">参考: <a href="${p.source_url}" rel="noopener">${escapeHtml(p.source_name)}</a></div>` : ""}
-<div class="credit">本記事は、${escapeHtml(CONFIG.company)}が提唱する付加価値経営の視点でニュースを解説するものです。</div>
-</article>`;
-  const jsonLd = {
+<div class="credit">本記事は、${escapeHtml(CONFIG.company)}が提唱する付加価値経営の視点でニュースを解説するものです。<a href="../about.html">編集方針</a></div>
+</article>
+${related.length ? `<div class="related"><h2>関連記事</h2><ul class="rel-list">${related
+    .map(
+      (q) => `<li><a href="${q.slug}.html">${heroFor(q.slug, "../", 800, 240)}<span class="rel-t">${escapeHtml(q.title)}</span><span class="rel-d">${q.date.replaceAll("-", ".")}${q.category ? ` ｜ ${escapeHtml(q.category)}` : ""}</span></a></li>`
+    )
+    .join("")}</ul></div>` : ""}`;
+
+  const hasImg = existsSync(join(ASSETS_DIR, `${p.slug}.jpg`));
+  const newsLd = {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
     headline: p.title,
     datePublished: p.date,
+    dateModified: p.date,
     description: p.excerpt,
-    author: { "@type": "Organization", name: CONFIG.company, url: CONFIG.companyUrl },
+    ...(CONFIG.baseUrl ? { mainEntityOfPage: `${CONFIG.baseUrl}${p.htmlPath}` } : {}),
+    ...(CONFIG.baseUrl && hasImg ? { image: [`${CONFIG.baseUrl}/assets/${p.slug}.jpg`] } : {}),
+    author: { "@type": "Organization", name: CONFIG.company, url: CONFIG.baseUrl ? `${CONFIG.baseUrl}/about.html` : CONFIG.companyUrl },
     publisher: { "@type": "Organization", name: CONFIG.company, url: CONFIG.companyUrl },
   };
+  const breadcrumbLd = CONFIG.baseUrl
+    ? {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "ホーム", item: `${CONFIG.baseUrl}/` },
+          ...(p.category ? [{ "@type": "ListItem", position: 2, name: p.category, item: `${CONFIG.baseUrl}/category/${catSlug(p.category)}.html` }] : []),
+          { "@type": "ListItem", position: p.category ? 3 : 2, name: p.title },
+        ],
+      }
+    : null;
   writeFileSync(
     join(OUT_DIR, "articles", `${p.slug}.html`),
-    page({ title: `${p.title} | ${CONFIG.siteName}`, description: p.excerpt, path: p.htmlPath, bodyHtml, jsonLd })
+    page({ title: `${p.title} | ${CONFIG.siteName}`, description: p.excerpt, path: p.htmlPath, bodyHtml, jsonLd: breadcrumbLd ? [newsLd, breadcrumbLd] : newsLd })
   );
 }
 
@@ -626,6 +673,61 @@ q.addEventListener("input",render);cat.addEventListener("change",render);render(
   })
 );
 
+// ---------- 実践ガイド(ピラーページ) ----------
+const GUIDES_DIR = join(ROOT, "guides");
+const guides = [];
+if (existsSync(GUIDES_DIR)) {
+  for (const f of readdirSync(GUIDES_DIR).filter((x) => x.endsWith(".md")).sort()) {
+    const { meta, body } = parseFrontmatter(readFileSync(join(GUIDES_DIR, f), "utf8"));
+    if (meta.title && meta.slug && meta.description) guides.push({ ...meta, body });
+  }
+}
+mkdirSync(join(OUT_DIR, "guides"), { recursive: true });
+for (const g of guides) {
+  const guideLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: g.title,
+    description: g.description,
+    datePublished: g.date,
+    dateModified: g.date,
+    ...(CONFIG.baseUrl ? { mainEntityOfPage: `${CONFIG.baseUrl}/guides/${g.slug}.html` } : {}),
+    author: { "@type": "Organization", name: CONFIG.company, url: CONFIG.baseUrl ? `${CONFIG.baseUrl}/about.html` : CONFIG.companyUrl },
+    publisher: { "@type": "Organization", name: CONFIG.company, url: CONFIG.companyUrl },
+  };
+  writeFileSync(
+    join(OUT_DIR, "guides", `${g.slug}.html`),
+    page({
+      title: `${g.title} | ${CONFIG.siteName}`,
+      description: g.description,
+      path: `/guides/${g.slug}.html`,
+      jsonLd: guideLd,
+      bodyHtml: `${navHtml("../", "__guides", cats)}
+<div class="crumb"><a href="../index.html">ホーム</a> › <a href="index.html">実践ガイド</a></div>
+<article>
+<h1>${escapeHtml(g.title)}</h1>
+<div class="meta"><time datetime="${g.date}">${g.date.replaceAll("-", ".")}</time><span class="chip chip-cat">実践ガイド</span></div>
+<p class="lead">${escapeHtml(g.description)}</p>
+${mdToHtml(g.body, g)}
+<div class="credit">本ガイドは、${escapeHtml(CONFIG.company)}が提唱する付加価値経営の視点で編纂しています。<a href="../about.html">編集方針</a></div>
+</article>`,
+    })
+  );
+}
+writeFileSync(
+  join(OUT_DIR, "guides", "index.html"),
+  page({
+    title: `実践ガイド | ${CONFIG.siteName}`,
+    description: `値上げ・脱コモディティなど、付加価値経営を実践するための体系的なガイド集。${CONFIG.company}編纂。`,
+    path: `/guides/index.html`,
+    bodyHtml: `${navHtml("../", "__guides", cats)}
+<h1 class="page-title">実践ガイド</h1>
+${guides.length ? `<ul class="term-list">
+${guides.map((g) => `<li><a href="${g.slug}.html"><span class="tl-term">${escapeHtml(g.title)}</span><span class="tl-def">${escapeHtml(g.description)}</span></a></li>`).join("\n")}
+</ul>` : `<p>準備中です。</p>`}`,
+  })
+);
+
 // ---------- 運営者情報・編集方針 ----------
 const ABOUT_PATH = join(ROOT, "about.md");
 if (existsSync(ABOUT_PATH)) {
@@ -649,7 +751,35 @@ ${mdToHtml(aboutMd)}
 if (CONFIG.baseUrl) {
   writeFileSync(
     join(OUT_DIR, "sitemap.xml"),
-    `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${CONFIG.baseUrl}/</loc></url><url><loc>${CONFIG.baseUrl}/database.html</loc></url><url><loc>${CONFIG.baseUrl}/about.html</loc></url><url><loc>${CONFIG.baseUrl}/archive.html</loc></url><url><loc>${CONFIG.baseUrl}/terms/index.html</loc></url>${terms.map((t) => `<url><loc>${CONFIG.baseUrl}/terms/${t.slug}.html</loc></url>`).join("")}${[...cats.keys()].map((c) => `<url><loc>${CONFIG.baseUrl}/category/${catSlug(c)}.html</loc></url>`).join("")}${posts.map((p) => `<url><loc>${CONFIG.baseUrl}${p.htmlPath}</loc><lastmod>${p.date}</lastmod></url>`).join("")}</urlset>`
+    `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>${CONFIG.baseUrl}/</loc></url><url><loc>${CONFIG.baseUrl}/database.html</loc></url><url><loc>${CONFIG.baseUrl}/about.html</loc></url><url><loc>${CONFIG.baseUrl}/guides/index.html</loc></url>${guides.map((g) => `<url><loc>${CONFIG.baseUrl}/guides/${g.slug}.html</loc><lastmod>${g.date}</lastmod></url>`).join("")}<url><loc>${CONFIG.baseUrl}/archive.html</loc></url><url><loc>${CONFIG.baseUrl}/terms/index.html</loc></url>${terms.map((t) => `<url><loc>${CONFIG.baseUrl}/terms/${t.slug}.html</loc></url>`).join("")}${[...cats.keys()].map((c) => `<url><loc>${CONFIG.baseUrl}/category/${catSlug(c)}.html</loc></url>`).join("")}${posts.map((p) => `<url><loc>${CONFIG.baseUrl}${p.htmlPath}</loc><lastmod>${p.date}</lastmod></url>`).join("")}</urlset>`
+  );
+}
+
+// robots.txt / llms.txt
+if (CONFIG.baseUrl) {
+  writeFileSync(join(OUT_DIR, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${CONFIG.baseUrl}/sitemap.xml\n`);
+  writeFileSync(
+    join(OUT_DIR, "llms.txt"),
+    `# ${CONFIG.siteName}
+
+> ${CONFIG.tagline}。運営: ${CONFIG.company}(${CONFIG.companyUrl})。実在の報道・一次情報に基づき、値上げ・差別化・高付加価値化の実例を「顧客価値の構造」から解説する経営者向けメディア。
+
+## 主要ページ
+- [このメディアについて・編集方針](${CONFIG.baseUrl}/about.html)
+- [用語集(付加価値経営の${terms.length}用語の定義)](${CONFIG.baseUrl}/terms/index.html)
+- [事例データベース(${posts.length}件を横断検索)](${CONFIG.baseUrl}/database.html)
+- [実践ガイド](${CONFIG.baseUrl}/guides/index.html)
+- [全記事一覧](${CONFIG.baseUrl}/archive.html)
+
+## 用語集
+${terms.map((t) => `- [${t.term}](${CONFIG.baseUrl}/terms/${t.slug}.html): ${t.definition}`).join("\n")}
+
+## カテゴリ
+${[...cats.keys()].map((c) => `- [${c}](${CONFIG.baseUrl}/category/${catSlug(c)}.html)`).join("\n")}
+
+## 記事
+全記事は [sitemap.xml](${CONFIG.baseUrl}/sitemap.xml) を参照。
+`
   );
 }
 

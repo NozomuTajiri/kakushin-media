@@ -11,7 +11,7 @@
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://news.kakushin.biz/articles/softbank-paytoku2-value-bundle.html">
 <meta property="og:image" content="https://news.kakushin.biz/assets/softbank-paytoku2-value-bundle.jpg">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"ソフトバンク、値上げに衛星通信を添えた理由","datePublished":"2026-04-10","description":"ソフトバンクは新料金プラン「ペイトク2」を発表。既存プランは7月から値上げする一方、新プランには衛星通信や海外データ放題を追加料金なしで内包。値上げに「新しい便益」を添える二段構えの値決めです。","author":{"@type":"Organization","name":"株式会社カクシン","url":"https://kakushin.biz"},"publisher":{"@type":"Organization","name":"株式会社カクシン","url":"https://kakushin.biz"}}</script>
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"NewsArticle","headline":"ソフトバンク、値上げに衛星通信を添えた理由","datePublished":"2026-04-10","dateModified":"2026-04-10","description":"ソフトバンクは新料金プラン「ペイトク2」を発表。既存プランは7月から値上げする一方、新プランには衛星通信や海外データ放題を追加料金なしで内包。値上げに「新しい便益」を添える二段構えの値決めです。","mainEntityOfPage":"https://news.kakushin.biz/articles/softbank-paytoku2-value-bundle.html","image":["https://news.kakushin.biz/assets/softbank-paytoku2-value-bundle.jpg"],"author":{"@type":"Organization","name":"株式会社カクシン","url":"https://news.kakushin.biz/about.html"},"publisher":{"@type":"Organization","name":"株式会社カクシン","url":"https://kakushin.biz"}},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"ホーム","item":"https://news.kakushin.biz/"},{"@type":"ListItem","position":2,"name":"IT・SaaS","item":"https://news.kakushin.biz/category/it-saas.html"},{"@type":"ListItem","position":3,"name":"ソフトバンク、値上げに衛星通信を添えた理由"}]}]</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23212947'/%3E%3Ctext x='50' y='72' font-size='58' text-anchor='middle' fill='%23cca433' font-family='serif' font-weight='bold'%3E価%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -85,6 +85,17 @@ article h3{font-size:1.05rem;margin:2rem 0 .75rem;color:var(--navy)}
 article p{margin-bottom:1.4rem;text-align:justify}
 article a{color:var(--gold-text);border-bottom:1px solid currentColor}
 article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
+/* 関連記事 */
+.related{margin-top:3rem;padding-top:2rem;border-top:1px solid var(--line)}
+.related h2{font-family:"Noto Serif JP","Hiragino Mincho ProN",serif;font-size:1.15rem;color:var(--navy);margin-bottom:1.2rem;font-weight:600}
+.rel-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:560px){.rel-list{grid-template-columns:1fr}}
+.rel-list li{background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;transition:box-shadow .2s}
+.rel-list li:hover{box-shadow:0 6px 16px rgba(33,41,71,.12)}
+.rel-list a{display:block}
+.rel-list img,.rel-list svg{display:block;width:100%;height:auto;aspect-ratio:21/9;object-fit:cover}
+.rel-t{display:block;font-size:.88rem;font-weight:600;color:var(--navy);line-height:1.6;padding:.6rem .8rem .1rem}
+.rel-d{display:block;font-size:.72rem;color:var(--muted);padding:0 .8rem .7rem}
 /* 用語集 */
 .term-reading{font-size:.85rem;color:var(--muted);margin-left:.7rem;font-weight:400}
 .term-related{margin-top:2.5rem;display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
@@ -152,11 +163,11 @@ article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
 </div></header>
 <main><div class="wrap">
 
-<div class="crumb"><a href="../index.html">← 付加価値ニュース 一覧</a></div>
+<div class="crumb"><a href="../index.html">ホーム</a> › <a href="../category/it-saas.html">IT・SaaS</a></div>
 <article>
 <div class="hero"><img src="../assets/softbank-paytoku2-value-bundle.jpg?v=1f8dqoi" alt="" loading="lazy"></div>
 <h1>ソフトバンク、値上げに衛星通信を添えた理由</h1>
-<div class="meta"><time datetime="2026-04-10">2026.04.10</time><span class="chip">通信</span><span class="chip">価格戦略</span><span class="chip">値上げ</span></div>
+<div class="meta"><time datetime="2026-04-10">2026.04.10</time><span class="chip chip-cat">IT・SaaS</span><span class="chip">通信</span><span class="chip">価格戦略</span><span class="chip">値上げ</span></div>
 <p class="lead">ソフトバンクは新料金プラン「ペイトク2」を発表。既存プランは7月から値上げする一方、新プランには衛星通信や海外データ放題を追加料金なしで内包。値上げに「新しい便益」を添える二段構えの値決めです。</p>
 
 <div class="transform" aria-label="現状と理想">
@@ -182,8 +193,9 @@ article hr{border:none;border-top:1px solid var(--line);margin:2.5rem 0}
 <p>あなたの会社が次に価格を改定するとき、顧客への案内文にはコスト上昇の説明だけが書かれていないでしょうか。値上げ幅の分だけ、いや、それ以上の新しい便益を同時に提示できれば、値上げは「負担のお願い」ではなく「選び直しの提案」に変わります。価格改定の日を、価値提案の日にできているでしょうか。</p>
 <p>本記事は、株式会社カクシンが提唱する付加価値経営の視点でニュースを解説するものです。</p>
 <div class="source">参考: <a href="https://www.softbank.jp/corp/news/press/sbkk/2026/20260410_04/" rel="noopener">ソフトバンク プレスリリース「“ソフトバンク”で新料金プラン「ペイトク2」を提供開始」</a></div>
-<div class="credit">本記事は、株式会社カクシンが提唱する付加価値経営の視点でニュースを解説するものです。</div>
+<div class="credit">本記事は、株式会社カクシンが提唱する付加価値経営の視点でニュースを解説するものです。<a href="../about.html">編集方針</a></div>
 </article>
+<div class="related"><h2>関連記事</h2><ul class="rel-list"><li><a href="kddi-ltv-arpu-strategy.html"><img src="../assets/kddi-ltv-arpu-strategy.jpg?v=1j1om9k" alt="" loading="lazy"><span class="rel-t">KDDI、価格競争をやめてARPUを上げた方法</span><span class="rel-d">2026.05.12 ｜ IT・SaaS</span></a></li><li><a href="plaid-karte-value-pricing.html"><img src="../assets/plaid-karte-value-pricing.jpg?v=rp08t7" alt="" loading="lazy"><span class="rel-t">プレイド、10%値上げでも解約が出ない理由</span><span class="rel-d">2026.07.06 ｜ IT・SaaS</span></a></li><li><a href="microsoft-365-price-revision-retention.html"><img src="../assets/microsoft-365-price-revision-retention.jpg?v=b28un3" alt="" loading="lazy"><span class="rel-t">Microsoft 365値上げ、解約させない設計とは</span><span class="rel-d">2026.07.01 ｜ IT・SaaS</span></a></li><li><a href="cybozu-price-revision-retention.html"><img src="../assets/cybozu-price-revision-retention.jpg?v=foijcd" alt="" loading="lazy"><span class="rel-t">サイボウズ、2割値上げの後も増収が続く理由</span><span class="rel-d">2026.05.14 ｜ IT・SaaS</span></a></li></ul></div>
 </div></main>
 <footer class="site"><div class="wrap">
   運営: <a href="https://kakushin.biz" rel="noopener">株式会社カクシン</a> ─
