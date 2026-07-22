@@ -5,7 +5,7 @@
 ## 主要ページ
 - [このメディアについて・編集方針](https://news.kakushin.biz/about.html)
 - [用語集(付加価値経営の20用語の定義)](https://news.kakushin.biz/terms/index.html)
-- [事例データベース(115件を横断検索)](https://news.kakushin.biz/database.html)
+- [事例データベース(117件を横断検索)](https://news.kakushin.biz/database.html)
 - [実践ガイド](https://news.kakushin.biz/guides/index.html)
 - [全記事一覧](https://news.kakushin.biz/archive.html)
 
@@ -32,14 +32,14 @@
 - [バリューベースプライシング](https://news.kakushin.biz/terms/value-based-pricing.html): バリューベースプライシングとは、製品・サービスの原価や競合の価格ではなく、顧客が受け取る価値を基準に価格を決める手法です。顧客にとっての経済的・心理的な便益を見積もり、その価値の一部を対価として設定することで、価値と価格を一致させます。
 
 ## カテゴリ
+- [外食・サービス](https://news.kakushin.biz/category/gaishoku.html)
+- [製造業・B2B](https://news.kakushin.biz/category/seizo.html)
 - [海外事例](https://news.kakushin.biz/category/global.html)
 - [小売・流通](https://news.kakushin.biz/category/kouri.html)
-- [外食・サービス](https://news.kakushin.biz/category/gaishoku.html)
 - [エンタメ・レジャー](https://news.kakushin.biz/category/entertainment.html)
 - [金融・インフラ](https://news.kakushin.biz/category/finance-infra.html)
 - [IT・SaaS](https://news.kakushin.biz/category/it-saas.html)
 - [消費財・食品](https://news.kakushin.biz/category/shohizai.html)
-- [製造業・B2B](https://news.kakushin.biz/category/seizo.html)
 - [マクロ・調査](https://news.kakushin.biz/category/macro.html)
 - [サービス業](https://news.kakushin.biz/category/services.html)
 
